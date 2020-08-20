@@ -1,0 +1,47 @@
+.custom-notification {
+    position: fixed;    
+    z-index: 99999;
+    top: 105px;
+    right: 30px;    
+    width: auto;
+    height: 63px;
+    padding: 0px 16px;
+    line-height: 63px;
+    font-size: 16px;    
+    color: #FFFFFF;
+    border-radius: 6px;    
+    min-width: 400px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+    .status-result {
+        width: fit-content;
+        height: 100%;
+        display: flex;
+        margin-right: 16px;
+        .img-div {
+            width: 32px;
+            height: 100%;
+            display: flex;
+            margin-right: 14px;
+            img {
+                margin-right: 8px;
+            }
+        }
+    }
+    .hide-notification {
+        margin-left: auto;
+        margin-right: 0;
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+}
+.successNotification {
+    background-color: #57C874;
+}
+
+.failureNotification {
+    background-color: #F02935;    
+}

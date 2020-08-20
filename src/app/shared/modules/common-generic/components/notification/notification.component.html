@@ -1,0 +1,23 @@
+<div 
+  *ngIf="showNotification"
+  class="custom-notification" 
+  [class.successNotification] = "status == true"
+  [class.failureNotification] = "status == false"
+  >
+  <div class="status-result" *ngIf="status == true">
+    <div class="img-div">
+      <img src="../../../../../../assets/images/greenTick.svg"> 
+    </div>
+    Done!
+  </div>
+  <div class="status-result" *ngIf="status == false">
+    <div class="img-div">
+      <img src="../../../../../../assets/images/errorNotificationIcon.svg">
+    </div>
+    Error!
+  </div>
+  <div style="margin-right:16px;text-transform: capitalize;">
+    {{notificationText}}
+  </div>
+  <img class="hide-notification" src="../../../../../../assets/images/popup-close-icon.svg" (click)="removeNotification()">  
+</div>

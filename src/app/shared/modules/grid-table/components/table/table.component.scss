@@ -1,0 +1,131 @@
+.custom-css {
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: calc(100% - 90px);
+    overflow: overlay;
+    box-shadow: none !important;
+
+    table {
+        width: 100%;
+        border: 1px solid #cccccc14;
+
+        .mat-row:hover {
+            background: #009FDD !important;
+
+            .mat-cell { color: #fff !important; 
+                .underreview, .executed, .rejected { color: #fff; }
+            }
+        }
+        .mat-row:nth-child(even){
+            background-color:#fff;
+        }
+        .mat-cell,.mat-header-cell {
+            position: relative;
+            padding-left: 24px;
+        }
+        .hiddenCol {
+            display: none;
+        }
+        .row-buttons {
+            // position: absolute;
+            // top: 6px;
+            // right:10px;
+            display: flex; 
+            // justify-content: space-around;
+            position: relative;
+            img {
+                margin: 0;
+                margin-right: 4px;
+                margin-top: 0px;
+                cursor: pointer;
+                opacity: 0.5;
+            }
+            img:hover {
+                opacity: 1;
+            }
+
+            button{
+                height: 25px;
+                padding: 4px 11px !important;
+                font-size: 12px;
+                color: #009FDD;
+                background: #CCECF8;
+                border-radius: 3px;
+                font-weight: bold;
+                border: 0;
+                padding: 0;
+                outline: none;
+                vertical-align: middle;
+                margin-top: 5px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: #fff;
+            }
+        }
+        
+        .mat-row:nth-child(odd){
+            background-color:#f2f2f22a;
+        }
+        th.mat-header-cell {
+            background-color: #efefef !important;            
+            font-weight: 600;
+            font-size: 12px;
+            color: #60616F;
+            text-transform: capitalize;  
+            border-bottom: none;
+        }   
+    }
+    ::ng-deep .mat-paginator-container {
+        background-color: #efefefc2 !important;
+        font-weight: bold;
+    }
+     td.mat-cell {
+        border-bottom-color: rgba(0, 0, 0, 0.04);
+
+        .underreview { color: #DBA532; }
+        .executed { color: #009FDD; }
+        .rejected { color: #E02020; }
+    }
+    
+}
+.table-features{
+    width: 100%;
+    display: flex;
+    height: 70px; 
+    justify-content: flex-end;
+    align-items: center;
+
+    .mat-form-field-underline {
+        display: none !important;
+    }
+
+    .mat-form-field-infix {
+        width: auto;
+
+        .mat-form-field-label {
+            padding: 17px 10px;
+            font-size: 14px;
+        }
+
+    }
+
+    .excel-download {
+        width: 28px;
+        height: 28px;        
+        margin-right: 20px;
+        cursor: pointer;
+    }
+
+    .input-element {
+        box-sizing: border-box;
+        height: 45px;
+        min-width: 250px !important;
+        border: 1px solid #C8D6E5;
+        border-radius: 5px;
+        line-height: 45px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+}

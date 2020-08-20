@@ -1,0 +1,146 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+body{line-height:1;}
+ol,ul{list-style:none;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+*{margin:0px;padding:0px;}
+a{text-decoration:none;outline:none;color:inherit}
+a:hover{text-indent:0;cursor:pointer;}
+img{border:0;}
+ul{list-style:none}
+* b{font-weight:normal;}
+.clearfix:after{content:" ";visibility:hidden;display:block;height:0;clear:both;}
+html,body{height:100%;}
+input{outline:0;border:0;background:transparent;}        
+/* display flex  start*/
+
+ .flex {
+	display: flex;
+	display: -ms-flex;
+}
+ .center-h {
+	justify-content: center;
+}
+ .center-v {
+	align-items: center;
+}
+ .f-between {
+	justify-content: space-between;
+}
+ .f-col {
+	flex-flow: column;
+}
+ .f-row-rev {
+	flex-direction: row-reverse;
+}
+/* display flex  end*/
+/* grid start */
+ .inner-grid {
+	max-width: 1366px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+ .header .inner-grid {
+	padding: 0 0px;
+	max-width: 100%;
+}
+.wrapper {min-width: 300px;font-family: 'Ubuntu', sans-serif;font-weight: 400;line-height: 1.4;box-sizing: border-box;}
+.wrapper{
+	overflow: hidden;
+}
+.wrapper * {
+	box-sizing: border-box;
+}
+.app-search{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#navbar{
+    max-width: 320px;
+    width: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    .main-container{
+        min-height: 500px;
+        display: flex;
+        padding-top: 70px;
+        overflow-y: auto;
+        padding-bottom: 50px;
+        max-width: 100%;
+    }
+   
+}
+#navbar
+{
+    a.active{
+        svg,.menu-text{
+             stroke: rgb(76, 117, 242);
+             color: rgb(76, 117, 242);
+         }
+     }
+     a:visited,a:link{
+         color: #607d8b;
+     }
+} 
+// action button style 
+.generic-button-container {
+
+    .CTA-PRIMARY,.CTA-HOLLOW,.CTA-DELETE {
+      height: 45px;
+      border: none;
+      width: 150px;
+      border-radius: 3px;
+      font-family: "open sans";
+      font-weight: bold;
+      margin-right: 18px;
+      font-size: 14px;        
+      cursor: pointer;
+      background-color: transparent;
+    }
+    .CTA-PRIMARY {
+      background-color: #009FDD;
+      color: #fff;    
+    }
+    .CTA-DELETE {
+      background-color: #FDE9EA;
+      color: #F02935; 
+    }
+    .CTA-DELETE:hover {
+      background-color: rgb(253, 213, 215);    
+    }
+    .CTA-DELETE:active {
+      background-color: rgb(250, 178, 182);    
+    }
+    .CTA-PRIMARY:hover {
+      background-color: #008BC1;
+    }
+    .CTA-PRIMARY:active {
+      background-color: #006F9A;
+    }
+    .CTA-HOLLOW {
+      border: 1.5px solid #009FDD;
+      color: #009FDD;    
+    }
+    .CTA-HOLLOW:hover {
+      border: 1.5px solid #008BC1;
+      color: #008BC1; 
+    }
+    .CTA-HOLLOW:active {
+      border: 1.5px solid #006F9A;
+      color: #006F9A;
+    }
+    .CTA-HOLLOW-2 {
+      background: #fff;
+      height: 24px;
+      width: 80px;
+      font-size: 12px;
+    }
+    button:disabled {
+      cursor: not-allowed !important;
+    }
+  }

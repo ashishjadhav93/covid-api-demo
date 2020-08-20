@@ -1,0 +1,114 @@
+<div class="page-container">
+    Search your Country
+    <div class="select-box">
+        <select class="countrySelector" [(ngModel)]="dropDownvalueSelector['selectedCountry']" (change)="onChangeCountryDropDown(dropDownvalueSelector['selectedCountry'])" *ngIf="countryNames.length">
+            <option *ngFor="let element of countryNames">{{element}}</option>
+            </select>
+    </div>
+    <div class="left-sidebar">
+        <ul  class="type-level">
+            <li class="type-confirmed">
+                <span class="level-item">Confirmed</span>
+                <h4>+{{dropDownvalueSelector.NewConfirmed}}</h4>
+                <h2>{{dropDownvalueSelector.confirmedCase}}</h2>
+            </li>
+            <li class="type-active">
+                <span class="level-item">Active</span>
+                <h4></h4>
+                <h2>{{dropDownvalueSelector.activeCase}}</h2>
+            </li>
+            <li class="type-recovered">
+                <span class="level-item">Recovered</span>
+                <h4>+{{dropDownvalueSelector.NewRecovered}}</h4>
+                <h2>{{dropDownvalueSelector.recoveredCase}}</h2>
+            </li>
+            <li class="type-deceased">
+                <span class="level-item">Deceased</span>
+                <h4>+{{dropDownvalueSelector.NewDeaths}}</h4>
+                <h2>{{dropDownvalueSelector.deceasedCase}}</h2>
+            </li>
+        </ul>
+        <div class="state_data">
+            <div class="dataTable">
+                <div class="tableHead">
+                    <ul>
+                        <li>State/UT</li>
+                        <li>Confirmed</li>
+                        <li>Active</li>
+                        <li>Recovered</li>
+                        <li>Deceased</li>
+                        <li>Tested</li>
+                    </ul>
+                </div>
+                <div class="tableBody">
+                    <div class="stateName" *ngFor="let element of stateTableData" [id]=element[0] #element[0] >
+                       <div class="rowdata" (click)="districtDatashow(element[0])">
+                           <div class="dataBox" *ngFor="let elementChild of element"><span>{{elementChild}}</span></div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-container" class="add-ManageCategories" *ngIf="modalObject['associatedStateDataTable']">
+        <div class="modal-popup">
+           <div class="modal-header">
+                District Details  {{selectedValueTitle}}
+              <img src="../../../../../assets/popup-close-icon.svg" (click)="cancelModal()" class="close-modal">
+           </div>
+           <div class="modal-content">
+              <div class="associated-extensions-table">
+                <div class="dataTable">
+                    <div class="tableHead">
+                        <h3>Today's highlighted</h3>
+                        <h2>population <span>{{population}}</span></h2>
+                        <div class="deltaTable" *ngIf="deltaValue.length">
+                            <div class="highlighted" *ngFor="let deltaElement of deltaValue">
+                                <div *ngFor="let childElement of deltaElement" class="{{deltaValue[childElement]}}">{{childElement}}</div>
+                            </div>
+                        </div>
+                        
+                        <div class="disclaimer" *ngIf="!districtTableData.length"><svg aria-hidden="true" role="img" class="octicon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" style="display: inline-block; user-select: none; vertical-align: text-bottom;"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg><span> District-wise data not available in state bulletin</span></div>
+                        <ul *ngIf="districtTableData.length">
+                            <li>District</li>
+                            <li>Confirmed</li>
+                            <li>Active</li>
+                            <li>Recovered</li>
+                            <li>Deceased</li>
+                            <li>Tested</li>
+                        </ul>
+                    </div>
+                    <div class="tableBody" *ngIf="districtTableData.length">
+                        <div class="stateName" *ngFor="let element of districtTableData" [id]=element[0] #element[0] >
+                           <div class="rowdata">
+                               <div class="dataBox" *ngFor="let elementChild of element"><span>{{elementChild}}</span></div>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- <div *ngIf="associatedcategorydata.length">
+                    <a *ngFor="let element of associatedcategorydata"  [href]="getHref(element)" target="_blank"  class="childExtns">{{element.name}}</a>
+                 </div>
+                 <div *ngIf="!associatedcategorydata.length" >
+                    <p style="text-align: left;">No Data Found</p>
+                 </div> -->
+              </div>
+           </div>
+           <div class="modal-action-buttons generic-button-container">    
+              <button class="CTA-HOLLOW" (click)="cancelModal()">Close</button>
+           </div>
+        </div>
+     </div>
+    <div class="right-sidebar">
+        <div class="total-countsec">           
+            <ul class="type-level" *ngIf="goSlideDown">
+                <li *ngFor="let item of totalCountryCount | keyvalue" [class]=item.key>
+                    <span class="level-item">{{item.key}}</span>
+                    <h2>{{item.value}}</h2>
+                </li>               
+            </ul>            
+            <div class="GoDown" (click)="GoDown()"></div>
+        </div>
+
+    </div>
+</div>

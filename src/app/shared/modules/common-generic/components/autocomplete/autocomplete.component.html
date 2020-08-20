@@ -1,0 +1,23 @@
+<div class="autocomplete-dropdown">
+  <div class="dropdown-label" *ngIf="fieldLabel">{{fieldLabel}} <span *ngIf="required" style="color: red;">*</span></div>
+  <ng-container *ngIf="true">
+    <p-autoComplete
+      [(ngModel)]="value"
+      [suggestions] = "suggestions['copy'] || suggestions['suggestions']"
+      [disabled]="disabled ? true: false"
+      (completeMethod)="search($event,suggestions['suggestions'])"
+      [field]="fieldname"
+      [dropdown]="dropdown ? true : false"
+      [minLength]=0
+      (onSelect)="emitSelectedValue($event,autoComplete)"
+      [placeholder]="placeholder"
+      [forceSelection]="true"
+      [required]="required ? true:false"
+      #autoComplete
+      (onClear)="clear()"
+      emptyMessage="No Records available"
+      (onFocus)="autoComplete.el.nativeElement.querySelector('button').classList.add('ui-inverted-button');onDropdownClick($event,autoComplete)" 
+      (onBlur)="autoComplete.el.nativeElement.querySelector('button').classList.remove('ui-inverted-button');onBlur($event,autoComplete)"
+    ></p-autoComplete>
+  </ng-container>
+</div>

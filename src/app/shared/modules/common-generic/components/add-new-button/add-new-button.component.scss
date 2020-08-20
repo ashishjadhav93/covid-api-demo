@@ -1,0 +1,23 @@
+.new-button-container {
+    display: flex;
+    height: 45px;
+    line-height: 45px;
+    width: fit-content;
+    cursor: pointer;
+    img {
+        margin: auto 24px auto 0px;    
+        height: 32px;	
+        width: 32px;    
+    }
+    .button-text {
+        font-size: 14px;
+        color: #0DBE66;	
+        font-family: "Open Sans";	
+        font-size: 16px;	
+        font-weight: bold;	        
+    }
+}
+.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}

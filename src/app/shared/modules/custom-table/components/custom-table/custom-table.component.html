@@ -1,0 +1,136 @@
+<div class="custom-table-container" #CustomTableReference>
+  <div class="page-count">
+    {{tableRowsCopy.length ? tableRowsCopy.length : ''}} Entries
+  </div>
+  
+  <div 
+    class="pagination-top-container"
+    [class.noRecordsBorderRadius] = "tableRows && !tableRows.length"
+    >
+    <div class="table-search">
+      <input type="text" placeholder="Search" [(ngModel)]="tableFilterText" (input)="filterTable()">
+    </div>
+    <!-- <div class="multiselect-container">
+      <p-multiSelect 
+        [options]="columsList" 
+        [(ngModel)]="showColList" 
+        (onChange)="hideColumns()" 
+        optionLabel="label" 
+        [displaySelectedLabel]="false"
+        filterPlaceHolder="search columns"
+        defaultLabel="Selected Columns"
+        ></p-multiSelect>
+    </div>   -->
+    <div class="table-entries">      
+      <img class="excel-download" src="../../../../../../assets/images/excel2.svg" (click)="generateExcel()" *ngIf="tableRows.length && tableRows.length">    
+      <select class="show-entries" (change)="showEntriesChange($event.target.value)" [(ngModel)]="searchReference" *ngIf="tableRows.length && tableRows.length">
+        <option value="10">Show 10 Entries</option>
+        <option value="20">Show 20 Entries</option>
+        <option value="50">Show 50 Entries</option>
+        <option value="all">Show All Entries</option>
+      </select>
+      <div class="change-page-container" *ngIf="tableRows.length && tableRows.length">
+          <img class="left-arrow" [class.disabledArrow]="currentPage == 1" src="../../../../../../assets/images/leftArrowPagination.svg" (click)="changePage(currentPage-1)">
+          <input type="number" class="current-page" [(ngModel)]="currentPage" disabled>
+          <img class="right-arrow" [class.disabledArrow]="currentPage == totalPages" src="../../../../../../assets/images/rightArrowPagination.svg" (click)="changePage(currentPage+1)">          
+        </div>
+    </div>
+  </div>
+
+  <div class="custom-table" *ngIf="tableRows && displayedColumns">
+    <div class="table" *ngIf="tableRows.length">
+      <div class="table-headers">
+        <div class="table-column-headers" [matTooltip]="columns.label" *ngFor="let columns of displayedColumns;let ci = index" [style.width]="getWidth(displayedColumns.length,ci,CustomTableReference)" [style.display]="columns.isHidden ? 'none' : 'block' " >{{columns.label}}</div>        
+      </div>
+      
+      <div class="scrollable-div">
+        <div class="table-row-container">
+            <div class="table-rows" 
+              *ngFor="let rows of tableRows;let i = index" 
+              (click)="rowClickEvent(rows)" 
+              [style.cursor]="hasRowClick ? 'pointer': 'auto'"
+              (mouseenter)="hoverIndex = i"
+              (mouseleave)="hoverIndex = -1"
+              >
+              <!-- {{showEntriesCount}} -->
+              <div style="width:100%;display:flex;" *ngIf="i >= (currentPage-1)*showEntriesCount && i < ((currentPage-1)*showEntriesCount + parseint(showEntriesCount))">
+                <div class="table-row-data" *ngFor="let rowKey of displayedColumns;let ri = index" [style.width]="getWidth(displayedColumns.length,ri,CustomTableReference)" [style.display]="rowKey.isHidden ? 'none' : 'flex' "> 
+                  
+                  <span class="cell-value" *ngIf="!rowKey['inlineButton'] && !rowKey['inlineAPIButton'] && rows[rowKey['keyName']]">
+                    <span *ngIf="rowKey['datePipe']; else normal">{{rows[rowKey['keyName']] | date}}</span>
+                    <ng-template #normal>
+                      <span *ngIf="rowKey['dollarSign']">$</span>
+                      {{rows[rowKey['keyName']] }}
+                    </ng-template>                        
+                  </span>
+
+                  <div class="hover-button generic-button-container" *ngIf="rowKey['hoverButtons'] && hoverIndex == i">
+                    <button class="CTA-HOLLOW CTA-HOLLOW-2" *ngFor="let hoverButtons of rowKey['hoverButtons']" (click)="handleCellButtonClick(hoverButtons,rows)">
+                      {{hoverButtons.label}}
+                    </button>                      
+                  </div>
+
+                  <!-- common button  -->
+                  <div *ngIf="rowKey['buttons']" class="cell-buttons">
+                    <div *ngFor="let images of rowKey['buttons']" class="image-container">
+                      <img [src]="images['path']" style="width:24px;" (click)="handleCellButtonClick(images,rows)">
+                    </div>
+                  </div>
+
+                  <!-- Row button -->
+                  <div *ngIf="rowKey['inlineButton']" class="inline-buttons">
+                    <div 
+                      *ngIf="rows[rowKey['keyName']]"
+                      [style.backgroundColor]="rowKey['inlineButton'][rows[rowKey['keyName']]]['backgroundColor']"
+                      [style.color]="rowKey['inlineButton'][rows[rowKey['keyName']]]['color']"   
+                      (click)="handleInlineButtonClick(rowKey,rows)"  
+                      >
+                      {{rows[rowKey['keyName']]}}                      
+                    </div>
+                  </div>
+
+                  <!-- API button:: Onclick of button populate the data in same cell -->
+                  <div *ngIf="rowKey['inlineAPIButton']" class="inline-buttons">
+                    <div                         
+                      [style.backgroundColor]="rowKey['inlineAPIButton']['backgroundColor']"
+                      [style.color]="rowKey['inlineAPIButton']['color']"
+                      (click)="inlineButtonClick(i,ri,rows,rowKey,ref)"
+                      #ref                 
+                      >
+                      {{rowKey['inlineAPIButton']['label']}}
+                    </div>
+                  </div>
+                  
+
+                </div>
+              </div>
+            </div>     
+          </div>
+        </div> 
+        <div class="table-footer-container">
+          <div class="pagination-footer-text">
+            <!-- Showing {{tableRows.length ? showEntriesCount : '0'}} entries of {{tableRows.length}} entries -->
+          </div>
+          <div class="change-page-container">
+              <select class="show-entries" (change)="showEntriesChange($event.target.value)" [(ngModel)]="searchReference">
+                  <option value="10">Show 10 Entries</option>
+                  <option value="20">Show 20 Entries</option>
+                  <option value="50">Show 50 Entries</option>
+                  <option value="all">Show All Entries</option>
+                </select>
+
+            <img class="left-arrow" [class.disabledArrow]="currentPage == 1" src="../../../../../../assets/images/leftArrowPagination.svg" (click)="changePage(currentPage-1)">
+            <input type="number" class="current-page" [(ngModel)]="currentPage" disabled>
+            <img class="right-arrow" [class.disabledArrow]="currentPage == totalPages" src="../../../../../../assets/images/rightArrowPagination.svg" (click)="changePage(currentPage+1)">          
+          </div>
+        </div>      
+    </div>
+    <div class="no-records" *ngIf="!tableRows.length">
+        <div class="no-records-content">
+          <img class="no-records-image" src="../../../../../assets/images/norecords.svg">
+          <div class="no-records-text-header"> That’s a miss! </div>
+          <div  class="no-records-text"> Sorry, no results were found for that query </div>
+        </div>
+    </div>
+  </div>
+</div>

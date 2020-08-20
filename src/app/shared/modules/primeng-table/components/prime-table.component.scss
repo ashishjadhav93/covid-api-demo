@@ -1,0 +1,317 @@
+.primetable-container {    
+    .total-entries {
+        height: 20px;
+        margin-bottom: 18px;
+        .text {
+            font-weight: 700;
+            color: #009fdd;
+            font-size: 16px;
+        }
+    }
+
+    p-table {
+        ::ng-deep .ui-table {
+            height: 100%;
+            .ui-table-wrapper {
+                max-height: calc(100% - 160px);
+            }
+            .ui-table-caption {
+                background-color: #f2f3f4;
+                border: 1px solid rgba(0,0,0,0.1);
+                border-radius: 6px 6px 0px 0px;
+                color: #60616F;
+                .table-options {
+                    height: 44px;
+                    display: flex;
+                    align-items: center;
+                    .generic-input-container {
+                        padding-right: 0px;
+                        width: 240px;
+                        margin-right: 14px;
+                        input {
+                            width: 100% !important;
+                            height: 30px;
+                            padding-right: 8px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    .export-options {
+                        width: 24px;                    
+                        height: 24px;
+                        margin-right: 14px;
+                        .excel {
+                            cursor: pointer;
+                        }
+                    }
+                    .show-entries {
+                        margin-left: auto;
+                        width: 160px;
+                        select {
+                            background-color: #fff;
+                            height: 32px;
+                            border: none;
+                            border-radius: 2px;
+                            margin-left: auto;
+                            font-weight: 600;
+                            outline: none;
+                            width: 160px;
+                            color: #60616F;
+                            option {
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                   
+                    .generic-multiselect-container {
+                        .ui-multiselect  {
+                          border: 1px solid #c8d6e5;  
+                          .ui-multiselect-item {
+                            outline: none;
+                          }
+                          .ui-chkbox {
+                            .pi-check:before {
+                              color: #009fdd !important;
+                            }
+                            .ui-chkbox-box, .ui-chkbox-box:hover {
+                              border: 1px solid #c8d6e5 !important;
+                            }
+                          }
+                          .ui-state-active,.ui-state-active:hover {
+                            background-color: #fff !important;
+                            background-image: url('/assets/images/checkbox-tick.svg');
+                            background-repeat: no-repeat;
+                            background-position: 3px;
+                          }
+                    
+                          .ui-state-highlight {
+                            background-color: #fff !important;
+                            color: #60616F !important;
+                          } 
+                          .ui-multiselect-item:hover {
+                            background-color: #009edd6e !important;
+                            color: #60616F;
+                          }
+                          .ui-multiselect-label {
+                            padding-left: 8px;
+                            text-align: left;
+                            font-weight: 600;        
+                          }  
+                          .ui-multiselect-trigger-icon {
+                            width: 14px;
+                            height: 14px;
+                            background-image: url('/assets/images/downArrow.svg');
+                            background-repeat: no-repeat;
+                            background-position-y: 2px;
+                            background-size: 12px;
+                          }
+                        }
+                        .ui-multiselect:hover {
+                          border: 1px solid #c8d6e5 !important;    
+                        }
+                        .ui-multiselect-open {
+                            .ui-multiselect-trigger-icon {
+                                transform: rotateX(180deg);
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            .ui-table-thead {
+                .ui-state-highlight {
+                    color: #60616F;
+                }
+                tr {                
+                    .ui-sortable-column-icon {
+                        color: #ccc;
+                    }                
+                    color: #60616F;
+                    th {
+                        background-color: #f2f3f4;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        height: 40px;
+                        font-weight: 600;
+                        outline: none;
+                        border: 1px solid rgba(0,0,0,0.1);
+                        text-align: left;
+                        border-top: none;
+                        position: sticky;
+                        top: 0px;
+                        z-index: 1;
+                        padding-right: 26px;
+                        p-sorticon {
+                            position: absolute;
+                            right: 6px;
+                            z-index: 1;
+                            top: 13px;
+                        }
+                    }
+                }
+                p-sorticon {
+                    ::ng-deep .pi-sort {
+                        height: 12px;
+                        width: 12px;
+                        background-image: url('/assets/images/sortIcon.svg');
+                        display: block;
+                        background-repeat: no-repeat;
+                        background-size: 12px; 
+                    }
+                    ::ng-deep .pi-sort-up {
+                        height: 12px;
+                        width: 12px;
+                        background-image: url('/assets/images/sort-up.svg');
+                        display: block;
+                        background-repeat: no-repeat;
+                        background-size: 12px;                    
+                    }
+                    ::ng-deep .pi-sort-down {
+                        height: 12px;
+                        width: 12px;
+                        background-image: url('/assets/images/sort-up.svg');
+                        display: block;
+                        background-repeat: no-repeat;
+                        background-size: 12px; 
+                        transform: rotate(180deg);                   
+                    }
+                }
+            }
+            .ui-table-tbody {
+                tr {
+                    height: 55px;
+                    background-color: #fff;
+                    color: #60616F;
+                    .usableStatus{
+                        text-transform: capitalize;
+                    }
+                    td {
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                        width: 100%;
+                        word-break: break-all;
+                        .inline-button, .api-button {
+                            width: 100%;
+                            button {
+                                height: 24px;
+                                width: 100%;
+                                font-weight: 400;
+                                white-space: nowrap;
+                                max-width: 120px;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
+                            }
+                            .cell-loader {
+                                display: none;
+                            }
+                            .response {
+                                display: flex;
+                                align-items: center;
+                                color: #A8A9BB;
+                            }
+                            .validResponse {
+                                color: #57C874;
+                                display: flex;                                
+                            }
+                            .invalidResponse {
+                                color: #F02935;
+                                display: flex;
+                            }
+                        }
+                    }
+                }
+                .hoverClass:hover {
+                    cursor: pointer;
+                    background-color: #10aeec14;
+                }
+                .hover-button{
+                    display: flex;
+                    align-items: center;
+                    min-height: 37px;
+                    justify-content: space-between;
+                    .edit-record {
+                        margin-left: 20px;
+                        cursor: pointer;
+                        display: none;
+                    }
+                }
+                .hover-button:hover {                              
+                    .edit-record{
+                        display: block !important;
+                    }
+                }
+                .view-image{
+                    height: 24px;
+                    width: 24px;
+                    cursor: pointer;
+                }
+                .view-mail{  
+                    background: #e5f5fb;
+                    height: 35px;
+                    width: 35px;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    .view-image{
+                        height: 18px;
+                        width: 18px;
+                    }                 
+                    img.hide-image{
+                        height: 18px;
+                        width: 18px;
+                        opacity: 0.2;
+                    }
+                }
+                .edit-record{
+                    cursor: pointer;
+                }
+                .edit-record:hover{
+                    color: #009FDD;
+                    text-decoration: underline;
+                }
+            }
+            .ui-paginator-bottom {
+                height: 60px;
+                display: flex;
+                background-color: #f2f3f4;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 0px 0px 6px 6px;
+                align-items: center;
+                a:first-child {
+                    margin-left: auto;
+                }
+                .ui-paginator-prev {
+                    outline: none;
+                    .ui-paginator-icon {                    
+                        background-image: url(/assets/images/leftArrowPagination.svg);
+                        background-size: 16px;
+                        background-repeat: no-repeat;
+                        width: 16px;
+                        height: 16px;
+                        background-position-y: 3px;
+                    }
+                }
+                .ui-paginator-next {
+                    outline: none;
+                    .ui-paginator-icon {                    
+                        background-image: url(/assets/images/rightArrowPagination.svg);
+                        background-size: 16px;
+                        background-repeat: no-repeat;
+                        width: 16px;
+                        height: 16px;
+                        background-position-y: 3px;
+                    }
+                }
+                .ui-paginator-pages {
+                    height: 32px;
+                    .ui-state-active {
+                        background-color: #009fdd;
+                        border-radius: 4px;                    
+                    }
+                }
+            }
+        }
+    }    
+}

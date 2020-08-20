@@ -1,0 +1,13 @@
+.custom-checkbox-container {
+    .checkbox-label {
+      margin-bottom: 8px;
+    }
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        .checkbox-container {
+            margin-right: 14px;
+        }
+    }
+
+  }

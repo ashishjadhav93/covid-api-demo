@@ -1,0 +1,35 @@
+.custom-textlabel {
+  color: #656E7D;
+  font-family: "Open Sans";
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.custom-text {
+  height: 45px;
+  border: 1px solid #C8D6E5;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  width: 340px;
+  font-weight: 600;
+  padding-left: 12px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.custom-text:disabled {
+    border: 1px solid #CCD2D8;
+    background-color: #E2E3E4;
+    color: #8C97A3;
+}
+
+.custom-text::placeholder {
+  color: #8C97A3;
+  box-sizing: border-box;
+  font-weight: normal;
+}
+
+.custom-text:focus {
+  border: 1px solid #009FDD;
+  font-weight: 600;
+}

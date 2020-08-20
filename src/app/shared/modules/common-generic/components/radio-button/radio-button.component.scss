@@ -1,0 +1,28 @@
+.custom-radio-container {
+    p-radioButton {
+        margin-right: 16px;
+    }
+    ::ng-deep .ui-radiobutton {
+        .ui-radiobutton-box,.ui-radiobutton-box:hover {
+            border: 1px solid #c8d6e5 !important;
+        }
+        .ui-state-active {
+            border: 1px solid #c8d6e5;
+            background-color: #fff;
+            color: #009fdd;
+            .ui-radiobutton-icon {
+                background-color: #009fdd;
+            }
+        }
+        .ui-state-focus,.ui-state-focus:hover {
+            border-color: #c8d6e5 !important;
+            background-color: #fff !important;
+            box-shadow: none;
+        }
+    }
+    ::ng-deep .ui-radiobutton-label {
+        color: #656E7D;
+        font-size: 14px;
+        cursor: pointer;
+    }    
+}

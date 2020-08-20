@@ -1,0 +1,10 @@
+<div class="custom-textlabel">{{textLabel}}</div>
+<input 
+    type="text" 
+    class="custom-text"
+    [disabled]="isDisabled"
+    [value]="inputValue ? inputValue : ''"
+    [placeholder]="placeholder"
+    [(ngModel)]="textValue"
+    (input)="onInputChange()"    
+    >

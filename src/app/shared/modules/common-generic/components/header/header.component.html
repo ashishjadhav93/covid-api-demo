@@ -1,0 +1,40 @@
+<div id="page-header-container">
+  <span class="header-text">
+    {{headerText}}
+  </span>
+  <div *ngIf="headerSubDetails" class="sub-text">{{headerSubDetails}}</div>
+  <div *ngIf="partnerName" class="sub-text">Logged in via: {{partnerName}}</div>
+  <div *ngIf="hasSearchOption" class="header-search">
+      <ng-container *ngIf="true">
+        <p-autoComplete
+          [suggestions]="searchDropDownValuesCopy"
+          [minLength] = 0
+          (completeMethod)="search($event,'searchLabels')"
+          (onSelect)="searchFieldInForm($event,autoComplete)" 
+          field="searchLabels"
+          placeholder="Search settings"          
+          #autoComplete          
+          [forceSelection]="true"
+          (onBlur)="checkValue(autoComplete)"
+          (onClear)="showClearAutocompleteButton = false;showClearAutocompleteButton = false;"
+          (onFocus)="autoComplete.handleDropdownClick();showClearAutocompleteButton = true;"          
+        ></p-autoComplete>
+        <img src="../../../../../../assets/images/close-blue.svg" class="clear-autocomplete" [style.display]="showClearAutocompleteButton ? 'block' : 'none'" (click)="clearAutocomplete(autoComplete)">
+      </ng-container>
+  </div>
+
+  <div *ngIf="hasPageSearchText" class="generic-input-container" style="margin-right: 35px;padding-right: 0px;">    
+    <input class="text-input" type="text" [placeholder]="pageSearchTextPlaceholder" [(ngModel)]="pageSearchText" (input)="onChangeSearchText()">
+    <img *ngIf="pageSearchText" class="clear-input" src="../../../../../../assets/images/close-black.svg" (click)="pageSearchText = '';onChangeSearchText()">
+  </div>
+  <div class="header-buttons" *ngIf="headerButtons" [style.marginLeft]="hasPageSearchText ? '0px' : 'auto'">
+    <button 
+      *ngFor="let button of headerButtons"
+      (click)="headerButtonClickEvent.emit(button)"      
+      >
+      <img *ngIf="button.imagePath" [src]="button.imagePath">
+      <span class="notification-count" *ngIf="button.hasNotificationCount">{{button.hasNotificationCount}}</span>
+    {{button.label}}
+    </button>    
+  </div>
+</div>

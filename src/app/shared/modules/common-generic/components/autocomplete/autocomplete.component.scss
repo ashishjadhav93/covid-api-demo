@@ -1,0 +1,97 @@
+.autocomplete-dropdown {
+    .dropdown-label {
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-family: "open sans";
+    }
+    ::ng-deep .ui-inputwrapper-focus {
+        .ui-autocomplete {
+            border: 1px solid #009fdd !important;
+        }
+    }
+    ::ng-deep .ui-autocomplete,  ::ng-deep .ui-autocomplete-multiple {
+        border: 1px solid #C8D6E5;
+        background-color: #FFFFFF;
+        height: 45px;
+        border-radius: 5px;
+        width: 100%;
+        #p-highlighted-option {
+            color: #213E42;
+            background-color: rgba(0,147,238,0.2);
+        }
+        
+        .ui-autocomplete-panel {
+                        width: 100%;
+                        margin-top: 1px;
+        }
+        input,ul {
+            height: 100%;                        
+            border: none !important;
+            border-radius: 5px 0px 0px 5px;
+            color: #213E42;
+            font-weight: 600;
+            box-shadow: none;
+            width: calc(100% - 41px);
+            .ui-autocomplete-token {
+                display: none;
+            }            
+        }
+       
+        .ui-autocomplete-items {
+            width: 100%;
+        }
+        input::placeholder {
+            color: #8C97A3;
+        }
+        .ui-button {
+            background-color: #fff;
+            border: none;
+            outline: none;
+            width: 40px;
+            .ui-button-text {
+                border-left: 1px solid #c8d6e5;                            
+                background-image: url('/assets/images/downArrow.svg');
+                background-repeat: no-repeat;
+                background-size: 12px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+            
+        }
+        .ui-inverted-button {
+            .ui-button-text {
+                transform: rotate(180deg);                    
+                overflow: hidden;
+                border-left: none;
+                border-right: 1px solid #c8d6e5;                            
+            }
+        }
+        .ui-state-highlight {
+            background-color: rgba(0,147,238,0.2);
+            
+        }
+        .ui-autocomplete-list-item {
+            color: #626262;
+                        height: 39px;
+                        font-size: 14px;
+                        line-height: 26px;
+        } 
+        .ui-autocomplete-emptymessage {
+            cursor: auto !important;
+        }                   
+    }
+
+    .disabledDropdown {
+        ::ng-deep input,::ng-deep .ui-button {
+            opacity: 1;
+            color: #8C97A3;
+            background-color: #EFF3F6 !important;
+        }
+    }
+
+    .ng-invalid.ng-dirty {
+        ::ng-deep .ui-autocomplete,  ::ng-deep .ui-autocomplete-multiple {
+            border: 1px solid red;
+        }
+    }
+}

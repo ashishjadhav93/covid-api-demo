@@ -1,0 +1,9 @@
+<div class="custom-checkbox-container generic-checkbox-container ">
+  <div class="checkbox-label" *ngIf="checkboxLabel" style="margin-bottom: 14px">{{checkboxLabel}}</div>
+  <div class="flex-container" *ngIf="checkboxValue">
+      <div class="generic-checkbox-container" *ngFor="let checkboxFields of allowedVals">
+        <p-checkbox name="groupname" [value]="checkboxFields" [label]="checkboxFields" [(ngModel)]="checkboxValue[KEYNAME]">
+        </p-checkbox>
+      </div>
+  </div>
+</div>

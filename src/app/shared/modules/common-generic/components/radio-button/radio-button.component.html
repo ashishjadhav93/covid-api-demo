@@ -1,0 +1,10 @@
+<div class="custom-radio-container">
+    <div *ngIf="radioLabel" style="margin-bottom: 8px;font-size: 14px;">{{radioLabel}}</div>
+    <p-radioButton 
+        *ngFor="let radioVal of radioOptions" 
+        name="groupname" 
+        [value]="radioVal['value']"
+        [(ngModel)]="radioValue"
+        (onClick)="onChangeRadio()"
+        [label]="radioVal['displayName']" ></p-radioButton>    
+</div>

@@ -1,0 +1,126 @@
+<div class="primetable-container">
+    <div class="total-entries" *ngIf="tableRowData.length">
+        <span class="text">{{tableRowData.length}} Entries</span>
+    </div>
+    
+    <p-table #tableRef 
+        [value]="tableRowDataCopy" 
+        [columns]="selectedColumns" 
+        [paginator]="true" 
+        [rows]="showEntriesCount" 
+        [resizableColumns]="true" 
+        columnResizeMode="fit"
+        [reorderableColumns]="true"
+        >
+            <ng-template pTemplate="caption">
+                <div class="table-options">
+                    <div class="generic-input-container">
+                        <input type="text" pInputText size="50" placeholder="Global Filter" (input)="filterTable($event.target.value)" style="width:auto">
+                    </div>
+                    <div class="export-options">
+                        <img src="../../../../../assets/images/excel2.svg" class="excel" (click)="exportAsExcel()">
+                    </div>
+                    <div class="generic-multiselect-container">
+                        <p-multiSelect 
+                            [options]="headerColumns" 
+                            [(ngModel)]="selectedColumns" 
+                            optionLabel="label"
+                            selectedItemsLabel="{0} columns selected" 
+                            [style]="{minWidth: '200px'}" 
+                            defaultLabel="Choose Columns"></p-multiSelect>
+                    </div>
+                    <div class="show-entries">
+                        <select [(ngModel)]="showEntriesCount">
+                            <option value="10">Show 10 Entries</option>
+                            <option value="20">Show 20 Entries</option>
+                            <option value="50">Show 50 Entries</option>
+                            <option [value]="tableRowData.length">Show All Entries</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                
+            </ng-template>
+            <ng-template pTemplate="header" let-headerColumns>
+                <tr>
+                    <th *ngFor="let col of headerColumns" [pSortableColumn]="col.keyName" [matTooltip]="col.label" pResizableColumn pReorderableColumn>
+                        {{col.label}}
+                        <p-sortIcon [field]="col.keyName" ></p-sortIcon>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage" let-columns>
+                <tr>
+                    <td [attr.colspan]="columns.length">
+                        No records found
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="selectedColumns">
+                <tr class="table-row" [class.hoverClass]="hasRowClick" (click)="onRowClick(rowData)">
+                    <td *ngFor="let col of selectedColumns" class="ui-resizable-column" [ngClass]="[col.keyName , 'ui-resizable-column']">
+                        
+                        <div *ngIf="col.inlineButton; else apiButton" class="inline-button" (click)="onInlineButtonClick(col,rowData)">
+                            <div class="generic-button-container" *ngIf="col.inlineButton[rowData[col.keyName]]">
+                                <button [class]="col.inlineButton[rowData[col.keyName]]['buttonClass']">{{col.inlineButton[rowData[col.keyName]]['label']}}</button>
+                            </div>
+                        </div>
+
+                        <ng-template #apiButton>
+                            <div *ngIf="col.inlineAPIButton; else hoverButton" class="api-button">
+                                <div class="cell-loader" #cellLoader><mat-spinner [diameter]="22"></mat-spinner></div>
+                                <div class="response" #responseRef [class]="rowData.className">                                    
+                                    <div *ngIf="rowData[col.keyName]" style="display: flex;">
+                                        <span *ngIf="rowData.className == 'invalidResponse'"><img src="../../../../../assets/images/exclamationRed.svg" width="14px"></span>
+                                        <span *ngIf="rowData.className == 'validResponse'"><img src="../../../../../assets/images/greenTick2.svg" width="14px"></span>                                            
+                                        {{rowData.proxyStatus}}
+                                    </div>
+                                </div>
+                                <div class="generic-button-container" #apiRef >
+                                    <button *ngIf="!rowData[col.keyName]" [class]="col.inlineAPIButton['buttonClass']" (click)="onAPIButtonClick(col,apiRef,cellLoader,responseRef,rowData)">{{col.inlineAPIButton['label']}}</button>
+                                </div>
+                            </div>
+                        </ng-template>
+
+                        <ng-template #hoverButton>
+                            <div class="hover-button" *ngIf="col.hoverButton; else viewButton">
+                               <span> {{rowData[col.keyName]}}</span>
+                                <div class="edit-record"(click)="onHoverButtonClick(rowData)" >
+                                    <img class="edit-image" src="../../../../../assets/images/edit-pen.svg">
+                                 </div>
+                            </div>
+                        </ng-template>  
+                        <ng-template #viewButton>
+                            <div class="view-button" *ngIf="col.viewButton; else mailBoxButton">
+                                {{rowData[col.keyName]}}
+                                <div class="see-record" >
+                                    <img class="view-image" (click)="onviewButtonClick(rowData)" src="../../../../../assets/images/eye-button.svg">
+                                 </div>
+                            </div>
+                        </ng-template>   
+                        <ng-template #mailBoxButton>
+                            <div class="mailBox-button" *ngIf="col.mailBoxButton; else hoverText">
+                                <div class="view-mail">                                     
+                                    <img *ngIf="!rowData[col.keyName]" class="hide-image" src="../../../../../assets/images/envelope.png">
+                                    <img *ngIf="rowData[col.keyName]" class="view-image" (click)="onmailBoxButtonClick(rowData)" src="../../../../../assets/images/envelope.png">
+                                </div>
+                            </div>
+                        </ng-template>                      
+                        <ng-template #hoverText>
+                            <div class="hover-Text" *ngIf="col.hoverText; else normalText">                                
+                                 <div class="edit-record"(click)="onhoverTextClick(rowData)" >
+                                    <span> {{rowData[col.keyName]}}</span>
+                                  </div>
+                             </div>
+                        </ng-template>   
+                        <ng-template #normalText>
+                            <span *ngIf="rowData[col.keyName]; else empty;">{{rowData[col.keyName]}}</span>
+                            <ng-template #empty>-</ng-template>
+                        </ng-template>
+    
+    
+                    </td>
+                </tr>
+            </ng-template>
+    </p-table>
+</div>
