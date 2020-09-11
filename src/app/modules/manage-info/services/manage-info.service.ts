@@ -1,12 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable,EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { URLS } from 'src/environments/configURL';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
+import {  } from 'events';
+import { ManageInfoComponent,UserSelectedEventArgs } from '../components/manage-info/manage-info.component';
 @Injectable({
   providedIn: 'root'
 })
 export class ManageInfoService {
+  $stateDataInfo = new BehaviorSubject(null);
+  user:UserSelectedEventArgs={
+    selectedState:""
+  }
   constructor(private http:HttpClient) { }
+
+  statedatainfo(value){
+    this.user.selectedState=value;
+    this.$stateDataInfo.next(this.user)
+    console.log(value)
+  }
   getManageInfo():Observable<any[]> {   
     return this.http.get<any[]>(URLS.manageInfo.getInfo)
   }

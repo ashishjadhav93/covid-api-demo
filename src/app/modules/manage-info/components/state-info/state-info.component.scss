@@ -1,0 +1,93 @@
+.inner-grid{
+    max-width: 100%;
+}
+.state-info-page{
+    .state-info-area{
+        max-width: 635px;
+        h1{
+            font-size: 32px;
+            font-weight: bold;
+            background: rgba(226, 48, 40, 0.0627451);
+            border-radius: 5px;
+            color: #e23028;
+            width: auto;
+            max-width: 100%;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        .state-level-info{
+            padding-left: 20px;
+        }
+        .type-level{  
+            display: flex;
+            width: 800px;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            margin-top: 35px;    
+            .level-item{
+                font-weight: 600;
+                width: 100%;
+                font-size: 18px;
+                margin-bottom: 8px;
+                display: block;
+            }
+            h2{
+                font-weight: 600;
+                font-size: 24px;
+            }
+            .type-confirmed,.Confirmed{
+                color: #ff073a;
+                h4{
+                    color: rgba(255,7,58,.6);
+                    display: block;
+                    min-height: 20px;
+                }
+                h2{
+                    color: #ff073a;
+                }
+            }
+            .type-active{
+                color: #007bff;
+                h4{
+                    color: rgba(0,123,255,.6);
+                    display: block;
+                    min-height: 20px;
+                }
+                h2{
+                    color: #007bff;
+                }
+            }
+            .type-recovered,.Recovered{
+                color: #28a745;
+                h4{
+                    color: rgba(40,167,69,.6);
+                    display: block;
+                    min-height: 20px;
+                }
+                h2{
+                    color: #28a745;
+                }
+            }
+            .type-deceased,.Deaths{
+                color: #6c757d;
+                h4{
+                    color: rgba(108,117,125,.6);
+                    display: block;
+                    min-height: 20px;
+                }
+                h2{
+                    color: #6c757d;
+                }
+            }
+            .type-tested{
+                color: rgba(32,26,162,.6);
+                font-size: 12px;
+
+            }
+
+        }
+       
+    } 
+   
+}

@@ -1,7 +1,6 @@
-<div class="navbar-container" >
-    <!-- <img class="navbar-toggle-button" src="../../../assets/images/menu.svg" >
-    (mouseenter)="mouseOverFunction()" (mouseleave)="mouseOutFuntion()"
-    -->
+<div class="navbar-container" [ngStyle]="{'width': toggle  ? '100%':'0%'}">
+  
+    <!-- (mouseenter)="mouseOverFunction()" (mouseleave)="mouseOutFuntion()" -->
     <div class="navbar-header">
       <div class="header-text">Covid-19 <br/><span>India</span></div>
     </div>
@@ -46,7 +45,8 @@
                 </div>
             </div>
         </span>
-    </div>
-  
-   
+    </div>    
   </div>
+  <div class="sidebar" (click)="toggle = !toggle" [ngStyle]="{'left': toggle  ? '320px':'0'}">
+       
+</div>

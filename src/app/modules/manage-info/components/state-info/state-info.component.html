@@ -1,0 +1,36 @@
+<!-- <p>state-info works! {{selectedstatepage}}</p> -->
+<div class="page-container state-info-page">
+   
+    <div class="state-info-area">
+        <h1 class="state_name">{{selectedstatepage}}</h1>
+        <ul  class="type-level state-level-info">
+            <li class="type-confirmed">
+                <span class="level-item">Confirmed</span>            
+                <h2>{{StateSelectors.confirmedCase}}</h2>
+            </li>
+            <li class="type-active">
+                <span class="level-item">Active</span>
+                <h2>{{StateSelectors.activeCase}}</h2>
+            </li>
+            <li class="type-recovered">
+                <span class="level-item">Recovered</span>
+                <h2>{{StateSelectors.recoveredCase}}</h2>
+            </li>
+            <li class="type-deceased">
+                <span class="level-item">Deceased</span>
+                <h2>{{StateSelectors.deceasedCase}}</h2>
+            </li>
+            <!-- <li class="type-tested">
+                <span class="level-item tested">Tested</span>
+                <h2>{{StateSelectors.testedcase}}</h2>
+            </li> -->
+            <li class="type-tested">
+                <span class="level-item tested">population</span>
+                <h2>{{StateSelectors.population}}</h2>
+            </li>
+        </ul>
+    </div>
+    
+        <app-state-map *ngIf="StateSelectors.confirmedCase>0"></app-state-map> 
+    
+</div>

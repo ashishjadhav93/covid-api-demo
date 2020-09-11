@@ -8,6 +8,7 @@
     z-index: 999;
     max-width: 320px;
     width: 100%;
+    overflow: hidden;
     .navbar-header{
         color: #6c757d;
         font-size: 19px;
@@ -20,6 +21,7 @@
             font-size: 17px;
         }
     }
+    
     .navbar-right{
         background: #f6f6f7;
         display: flex;
@@ -54,4 +56,27 @@
             margin-left: 20px;
         }
     }
+}
+.sidebar{
+    position: absolute;
+    background: red;
+    right: -50px;
+    height: 50px;
+    width: 50px;
+    top: 0;       
+    cursor: pointer; 
+    left: 0px;
+}
+.sidebar:after {
+    content: "";
+    border: solid gray;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 6px;
+    position: absolute;
+    left: 15px;
+    top: 17px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transition: 0.4s all;
 }
