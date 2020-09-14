@@ -1,26 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
-  sidebaropencloseValue=0;
-  toggle
+  route: string;
+  Gohomepage=false;
+  constructor(
+    location: Location,
+    private router: Router
+  ) {
+    router.events.subscribe((val) => {  
+      if(location.path() != '/manage-info'){ 
+        this.Gohomepage=true;
+      } else {
+        this.Gohomepage=false;
+      }
+    });
+  }
+ 
   ngOnInit(): void {
     this.initFunction();
   }
   initFunction(){
-    this.sidebaropen()
-  }
-  sidebaropen(){
-    if(this.sidebaropencloseValue==0){
-      this.sidebaropencloseValue=100;
-    }else{
-      this.sidebaropencloseValue=0;
-    }
-  }
+    console.log(this.router.url);
+    console.log(window.location.href)
+  } 
 }

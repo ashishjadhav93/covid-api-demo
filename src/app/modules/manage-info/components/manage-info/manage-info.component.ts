@@ -180,11 +180,9 @@ associatedStateCategoryData=[];
     testedcase:0,  
     selectedState:"MH"
  };
-  enter(stateattr,value) { 
-    //console.log(value);  
+  enter(stateattr,value) {   
     this.hoverStateSelector.selectedState=value; 
-    this.stateTableData.forEach(element => {      
-    // console.log(element)
+    this.stateTableData.forEach(element => {  
       if(element[0]==stateattr){
         this.hoverStateSelector.confirmedCase=element[1];
         this.hoverStateSelector.activeCase=element[2];

@@ -36,7 +36,26 @@
                 }
                 h4{
                     display: block;
-                    min-height: 17px;
+                }
+                .type-confirmed{
+                    h4{
+                        color: #ff073a;
+                    }
+                }
+                .type-active{
+                    h4{
+                        color: #007bff;
+                    }
+                }
+                .type-recovered{
+                    h4{
+                        color: #28a745;
+                    }
+                }
+                .type-deceased{
+                    h4{
+                        color: #6c757d;
+                    }
                 }
                 .type-level{
                     display: flex;
@@ -44,6 +63,7 @@
                     font-size: 12px;
                     margin-top: 10px;
                     padding-right: 20px;
+                    min-height: 55px;
                     li{
                         padding-left: 10px;
                         border-left: 1px solid #d4cfcf;

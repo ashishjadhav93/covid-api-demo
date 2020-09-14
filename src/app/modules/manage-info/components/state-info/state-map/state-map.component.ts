@@ -107,7 +107,11 @@ export class StateMapComponent implements OnInit {
  // on map load show first child of districts
   ngAfterViewInit(){
     setTimeout(() => {
-      this.onMapHover(document.querySelector('.stateMapChart').children[0].children[0].children[0].children[0].innerHTML);  
+      try{
+        this.onMapHover(document.querySelector('.stateMapChart').children[0].children[0].children[0].children[0].innerHTML);  
+      }catch(e){
+        console.log(e)
+      }
      }, 0);
   }
 

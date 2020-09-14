@@ -65,8 +65,6 @@ mapBlockCall=false
         });        
       }      
     });
-    
-    
     this.ManageInfoService.getStateInfo().subscribe(val=>{
       console.log(val)
       Object.keys(val).forEach((objectKey,value) => {       
