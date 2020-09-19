@@ -39,8 +39,10 @@ input{outline:0;border:0;background:transparent;}
 /* grid start */
  .inner-grid {
 	margin: 0 auto;
-	padding: 0 15px;
+  padding: 0;
+  padding-left: 15px;
 }
+
  .header .inner-grid {
 	padding: 0 0px;
 	max-width: 100%;
@@ -142,3 +144,6 @@ input{outline:0;border:0;background:transparent;}
       cursor: not-allowed !important;
     }
   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

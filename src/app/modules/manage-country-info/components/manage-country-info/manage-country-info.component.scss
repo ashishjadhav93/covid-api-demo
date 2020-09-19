@@ -1,0 +1,60 @@
+.inner-grid{max-width: 100%;}
+.page-container {
+	width: 100%;
+	height: 100%;
+    padding-bottom: 15px; 
+    .type-level{display: flex;width: 559px;justify-content: space-between;align-items: center;text-align: center;     
+        .level-item{font-weight: 600;width: 100%;font-size: 18px;margin-bottom: 8px;display: block;}
+        h2{font-weight: 600;font-size: 24px;}
+        .type-confirmed,.Confirmed{
+            color: #ff073a;
+            h4{color: rgba(255,7,58,.6);display: block;min-height: 20px;}
+            h2{color: #ff073a;}
+        }
+        .type-active{
+            color: #007bff;
+            h4{color: rgba(0,123,255,.6);display: block;min-height: 20px;}
+            h2{color: #007bff;}
+        }
+        .type-recovered,.Recovered{
+            color: #28a745;
+            h4{color: rgba(40,167,69,.6);display: block;min-height: 20px;}
+            h2{color: #28a745;}
+        }
+        .type-deceased,.Deaths{
+            color: #6c757d;
+            h4{color: rgba(108,117,125,.6);display: block;min-height: 20px;}
+            h2{color: #6c757d;}
+        }
+    }
+    .select-box{
+        position: relative;
+        height: 56px;
+        width: 488px;
+        margin: 8px 0 40px;
+        .dropdowntext{font-size: 21px;margin-bottom: -18px;margin-left: 20px;}
+        .countrySelector{
+            display: block;
+            -moz-box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            color: gray;
+            font-size: 19px;
+            height: 56px;
+            width: 488px;
+            outline: none;
+            padding: 10px;
+            padding-left: 26px;
+            padding-right: 40px;   
+            border: 1px solid grey;
+            border-radius: 30px;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            appearance: none;
+           
+        }
+    }
+    
+
+}

@@ -1,7 +1,9 @@
-.inner-grid{max-width: 100%;}
+.inner-grid{max-width: 100%;padding-right: 0px;}
 .page-container {
 	width: 100%;
-	height: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
     padding-bottom: 15px;   
     .type-level{display: flex;width: 559px;justify-content: space-between;align-items: center;text-align: center;     
         .level-item{font-weight: 600;width: 100%;font-size: 18px;margin-bottom: 8px;display: block;}
@@ -54,6 +56,17 @@
         -webkit-appearance: none;
         appearance: none;
        
+    }
+    .country_name{
+        font-size: 32px;
+        font-weight: bold;
+        background: rgba(226, 48, 40, 0.0627451);
+        border-radius: 5px;
+        color: #e23028;
+        width: auto;
+        max-width: 100%;
+        margin-bottom: 3px;
+        padding-left: 20px;
     }
     .select-box:after{
         content: "";
@@ -120,6 +133,7 @@
             transition: 0.4s all;
         }
     }
+    
     .state_data,.associated-extensions-table{
         .dataTable{
             width: 100%;
@@ -185,6 +199,7 @@
         .right-sidebar{
             width: 779px;
             margin-left: 34px; 
+            margin-top: 93px;
         }
     }
     .add-ManageCategories {
@@ -349,6 +364,53 @@
             .state-level-info{
                 padding-left: 20px;
             }
+        }
+    }
+    .updatepopup{
+        position: absolute;
+        width: 401px;
+        right: 20px;
+        top: 20px;
+        box-shadow: 1px 1px 1px 1px #00000059;
+        padding: 10px;
+        border-radius: 4px;
+        background: #fff;
+        right: -400px;
+        transition: .4s right;
+        .updatenews{
+            max-height: 500px;
+            overflow: hidden;
+            overflow-y: scroll;
+            padding-right: 10px;
+            p{
+                font-size: 13px;
+                line-height: 15px;
+                margin-top: 10px;
+                min-height: 50px;
+                border: 1px solid grey;
+                background: rgba(108,117,125,.0627451);
+                border-radius: 5px;
+                margin-bottom: .5rem;
+                padding: .75rem;
+                transition: all .2s ease-in-out;
+                color: #6c757d;
+                font-weight: 500;
+                font-family: sans-serif;
+            }
+        }
+        h3{
+            font-weight: bold;
+            font-size: 19px;
+        }
+        .notification{
+            background: linear-gradient(142deg,#6F8AE6,#1BC58D);
+            width: 55px;
+            position: absolute;
+            top: 0;
+            left: -55px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            cursor: pointer;
         }
     }
 }

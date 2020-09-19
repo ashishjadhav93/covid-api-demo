@@ -17,6 +17,7 @@ import { element } from 'protractor';
   styleUrls: ['./state-info.component.scss']
 })
 export class StateInfoComponent implements OnInit {
+ 
   selectedstatepage="MH";
   //user:UserSelectedEventArgs;
   constructor(
@@ -42,10 +43,50 @@ export class StateInfoComponent implements OnInit {
     NewDeaths:0,
     NewRecovered:0,
  };
+ stateISDname={  
+    "AN":"Andaman and Nicobar Islands",
+    "AP":"Andhra Pradesh",
+    "AR":"Arunachal Pradesh",
+    "AS":"Assam",
+    "BR":"Bihar",
+    "CT":"Chandigarh",
+    "CH":"Chhattisgarh",
+    "DN":"Dadra and Nagar Haveli",
+    "DD":"Daman and Diu",
+    "DL":"Delhi",
+    "GA":"Goa",
+    "GJ":"Gujarat",
+    "HR":"Haryana",
+    "HP":"Himachal Pradesh",
+    "JK":"Jammu and Kashmir",
+    "JH":"Jharkhand",
+    "KA":"Karnataka",
+    "KL":"Kerala",
+    "LA":"Ladakh",
+    "LD":"Lakshadweep",
+    "MP":"Madhya Pradesh",
+    "MH":"Maharashtra",
+    "MN":"Manipur",
+    "ML":"Meghalaya",
+    "MZ":"Mizoram",
+    "NL":"Nagaland",
+    "OR":"Odisha",
+    "PY":"Puducherry",
+    "PB":"Punjab",
+    "RJ":"Rajasthan",
+    "SK":"Sikkim",
+    "TN":"Tamil Nadu",
+    "TG":"Telangana",
+    "TR":"Tripura",
+    "UP":"Uttar Pradesh",
+    "UT":"Uttarakhand",
+    "WB":"West Bengal"
+ }
 selectedDistrict=[];
 mapBlockCall=false
   ngOnInit() {
     this.initFunction();    
+    console.log("state info data")
   }
   initFunction(){
     this.titleService.setTitle('state-info')    
@@ -56,13 +97,16 @@ mapBlockCall=false
     this.selectedstatepage="";
     this.ManageInfoService.$stateDataInfo.subscribe((data)=>{
       if(!data){
-        this.ManageInfoService.getStateName().subscribe(element=>{ 
-          this.selectedstatepage= element[this.route.snapshot.params.state]
-        });
+        // this.ManageInfoService.getStateName().subscribe(element=>{ 
+        //   this.selectedstatepage= element[this.route.snapshot.params.state]
+        // });
+        this.selectedstatepage=this.stateISDname[this.route.snapshot.params.state]
+        console.log(this.route.snapshot.params.state)
       }else{
-        this.ManageInfoService.getStateName().subscribe(element=>{ 
-          this.selectedstatepage= element[data.selectedState]
-        });        
+        // this.ManageInfoService.getStateName().subscribe(element=>{ 
+        //   this.selectedstatepage= element[data.selectedState]
+        // });    
+        this.selectedstatepage=this.stateISDname[data.selectedState]
       }      
     });
     this.ManageInfoService.getStateInfo().subscribe(val=>{

@@ -1,0 +1,34 @@
+<div class="page-container">
+    Search your Country
+    <div class="select-box">
+        <select class="countrySelector" [(ngModel)]="dropDownvalueSelector['selectedCountry']" (change)="onChangeCountryDropDown(dropDownvalueSelector['selectedCountry'])" *ngIf="countryNames.length">
+            <option *ngFor="let element of countryNames">{{element}}</option>
+            </select>
+    </div>
+    <div class="side-container">
+        <div class="left-sidebar">
+            <ul  class="type-level">
+                <li class="type-confirmed">
+                    <span class="level-item">Confirmed</span>
+                    <h4 *ngIf="dropDownvalueSelector.NewConfirmed>0">+{{dropDownvalueSelector.NewConfirmed}}</h4>
+                    <h2>{{dropDownvalueSelector.confirmedCase}}</h2>
+                </li>
+                <li class="type-active">
+                    <span class="level-item">Active</span>
+                    <h2>{{dropDownvalueSelector.activeCase}}</h2>
+                </li>
+                <li class="type-recovered">
+                    <span class="level-item">Recovered</span>
+                    <h4 *ngIf="dropDownvalueSelector.NewRecovered>0">+{{dropDownvalueSelector.NewRecovered}}</h4>
+                    <h2>{{dropDownvalueSelector.recoveredCase}}</h2>
+                </li>
+                <li class="type-deceased">
+                    <span class="level-item">Deceased</span>
+                    <h4 *ngIf="dropDownvalueSelector.NewDeaths>0">+{{dropDownvalueSelector.NewDeaths}}</h4>
+                    <h2>{{dropDownvalueSelector.deceasedCase}}</h2>
+                </li>
+            </ul>
+        </div>
+    </div>
+         
+</div>

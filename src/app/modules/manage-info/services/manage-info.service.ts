@@ -25,13 +25,19 @@ export class ManageInfoService {
   getmanageCountrynameInfo():Observable<any[]> {   
     return this.http.get<any[]>(URLS.manageCountryInfo.getCntryInfo)
   }
+  getmanageCalendarViceData(selectedDate):Observable<any[]> {
+    return this.http.get<any[]>(URLS.manageCalendarViceData.getCalendarViceData+"data-"+selectedDate+".min.json");
+  } 
+  getLogInfo():Observable<any[]> {   
+    return this.http.get<any[]>(URLS.manageCountryLogInfo.getCntryLogInfo)
+  }
   getTotalCountryCountInfo():Observable<any[]> {   
     return this.http.get<any[]>(URLS.countryTotalCount.getTotalCntryInfo)
   }
   getStateInfo():Observable<any[]> {   
     return this.http.get<any[]>(URLS.stateInfo.getStateNameInfo)
   }
-  getStateName():Observable<any[]> {   
+  getStateName():Observable<any[]> {    
     return this.http.get<any[]>(URLS.stateName.getStateName)
   }
 }

@@ -9,6 +9,8 @@ import { Location } from '@angular/common';
 export class NavbarComponent implements OnInit {
   route: string;
   Gohomepage=false;
+  updatelognews="4 new cases in Himachal Pradesh\n1 death in Meghalaya\n89 recoveries in Mizoram\n";
+
   constructor(
     location: Location,
     private router: Router

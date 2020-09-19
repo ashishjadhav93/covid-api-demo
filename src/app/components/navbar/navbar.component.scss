@@ -74,6 +74,20 @@
     }
     // display: none;
 }
+.updatepopup{
+    position: absolute;
+    width: 300px;
+    right: 20px;
+    top: 20px;
+    box-shadow: 1px 1px 1px 1px #00000059;
+    padding: 10px;
+    border-radius: 4px;
+    p{
+        font-size: 13px;
+        line-height: 15px;
+        margin-top: 10px;
+    }
+}
 // .sidebar:after {
 //     content: "";
 //     border: solid gray;
