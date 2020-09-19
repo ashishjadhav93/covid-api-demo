@@ -126,7 +126,7 @@ export class StateMapComponent implements OnInit {
    this.showDistrictsData.activeCase=0;
    this.showDistrictsData.recoveredCase=0;
    this.showDistrictsData.deceasedCase=0;
-   this.showDistrictsData.NewConfirmed=0,
+   this.showDistrictsData.NewConfirmed=0, 
    this.showDistrictsData.NewRecovered=0,
    this.showDistrictsData.NewDeaths=0;
     this.ManageInfoService.getStateInfo().subscribe(val=>{     
