@@ -109,7 +109,7 @@ associatedStateCategoryData=[];
      this.Loginfo();
     this.getStateTableInfo();
     this.onloadAnimMap();   
-    this.getmanageCalendarDate("2020-09-17");  
+   // this.getmanageCalendarDate("2020-09-17");  
   }
   // getmanageCountryInfo(selectedValue){   
   //   this.ManageInfoService.getmanageCountrynameInfo().subscribe(val=>{
@@ -163,14 +163,14 @@ associatedStateCategoryData=[];
   }
  
   
-  getmanageCalendarDate(date){
-    console.log(date);
+  // getmanageCalendarDate(date){
+  //   console.log(date);
 
-    //this.ManageAccountsService.getAccountHistory(this.addEditManageAccount.id).subscribe(val => {  
-      this.ManageInfoService.getmanageCalendarViceData(date).subscribe(val=>{
-        console.log(val);
-      });
-  }
+  //   //this.ManageAccountsService.getAccountHistory(this.addEditManageAccount.id).subscribe(val => {  
+  //     this.ManageInfoService.getmanageCalendarViceData(date).subscribe(val=>{
+  //       console.log(val);
+  //     });
+  // }
   districtTableData=[];
   selectedValueTitle;population;  
   deltaValue=[];

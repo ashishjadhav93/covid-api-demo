@@ -40,4 +40,8 @@ export class ManageInfoService {
   getStateName():Observable<any[]> {    
     return this.http.get<any[]>(URLS.stateName.getStateName)
   }
+  germapChartInfo(selectedchartDistrict):Observable<any[]> {
+    return this.http.get<any[]>(URLS.GetChartInfo.getMapDateInfo+"timeseries-"+selectedchartDistrict+".min.json");
+  } 
+  ///timeseries-MP.min.json
 }

@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
 export class NavbarComponent implements OnInit {
   route: string;
   Gohomepage=false;
+  GoCountryInfo=false;
   updatelognews="4 new cases in Himachal Pradesh\n1 death in Meghalaya\n89 recoveries in Mizoram\n";
 
   constructor(
@@ -20,6 +21,12 @@ export class NavbarComponent implements OnInit {
         this.Gohomepage=true;
       } else {
         this.Gohomepage=false;
+      }
+
+      if(location.path() != '/manage-country-info'){ 
+        this.GoCountryInfo=true;
+      } else {
+        this.GoCountryInfo=false;
       }
     });
   }

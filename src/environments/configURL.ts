@@ -25,5 +25,8 @@ export const URLS = {
   },
   stateName:{
     getStateName:'https://gist.githubusercontent.com/shubhamjain/35ed77154f577295707a/raw/7bc2a915cff003fb1f8ff49c6890576eee4f2f10/IndianStates.json'
+  },
+  GetChartInfo:{
+    getMapDateInfo:'https://api.covid19india.org/v4/min/'
   }
 }

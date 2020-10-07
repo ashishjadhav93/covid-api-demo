@@ -56,6 +56,25 @@
             margin-left: 20px;
         }
     }
+    
+}
+.world-map{
+    height: 55px;
+    background: linear-gradient(142deg, #6F8AE6, #1BC58D);
+    width: 55px;
+    position: absolute;
+    top: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    cursor: pointer;
+    padding-top: 6px;
+    padding-left: 7px;
+    margin-top: 10px;
+    right: 0;
+    user-select: none;
+    img{
+        width: 100%;
+    }
 }
 .sidebar{
     position: absolute;

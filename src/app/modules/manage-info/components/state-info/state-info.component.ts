@@ -86,7 +86,7 @@ selectedDistrict=[];
 mapBlockCall=false
   ngOnInit() {
     this.initFunction();    
-    console.log("state info data")
+   // console.log("state info data")
   }
   initFunction(){
     this.titleService.setTitle('state-info')    

@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'state-info/:state',component:StateInfoComponent},
   {path:'state-map',component:StateMapComponent},
   {path:'manage-info',component:ManageInfoComponent},
-  {path:'manage-countryInfo',component:ManageCountryInfoComponent},
+  {path:'manage-country-info',component:ManageCountryInfoComponent},
   {path:"**",component:PageNotFoundComponent},// page not found,list specical ne last line // wildcard route
 ];
  

@@ -9,84 +9,87 @@
     }
     .page-stateMap {
         width: 100%;
-        height: 100%;
         padding-bottom: 15px;
         max-width: 600px;        
     }
-    .cases-overview{
-        max-width: 450px;
-        border: 1px solid #d4cfcf;
-        border-radius: 11px;
-        width: 100%;
-        height: 100%;
-        .ov-title{
-            border-bottom: 1px solid #d4cfcf;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-        // background: linear-gradient(142deg,#6F8AE6,#1BC58D);
-        // color: #fff;
-        .ov-table{
-            .country-table{
-                padding: 10px;
-                padding-left: 16px;
+    .map-info-table{
+        padding-right: 20px;
+        .cases-overview{
+            max-width: 450px;
+            border: 1px solid #d4cfcf;
+            border-radius: 11px;
+            width: 100%;
+            margin-top: 60px;
+            .ov-title{
                 border-bottom: 1px solid #d4cfcf;
-               
-                .country-title{
-                    font-size: 14px;
-                }
-                h4{
-                    display: block;
-                }
-                .type-confirmed{
-                    h4{
-                        color: #ff073a;
-                    }
-                }
-                .type-active{
-                    h4{
-                        color: #007bff;
-                    }
-                }
-                .type-recovered{
-                    h4{
-                        color: #28a745;
-                    }
-                }
-                .type-deceased{
-                    h4{
-                        color: #6c757d;
-                    }
-                }
-                .type-level{
-                    display: flex;
-                    justify-content: space-between;
-                    font-size: 12px;
-                    margin-top: 10px;
-                    padding-right: 20px;
-                    min-height: 55px;
-                    li{
-                        padding-left: 10px;
-                        border-left: 1px solid #d4cfcf;
-                    }
-                    .Deaths,.Recovered{
-                        padding-left: 10px;
-                        border-left: 1px solid #d4cfcf;
-                    }
-                }
-                .type-level li:first-child{
-                    padding-left: 0px;
-                    border-left: 0px solid #d4cfcf;
-                }
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                padding: 10px;
             }
-            .country-table:last-child{
-                border-bottom: 0px solid #d4cfcf;
+            // background: linear-gradient(142deg,#6F8AE6,#1BC58D);
+            // color: #fff;
+            .ov-table{
+                .country-table{
+                    padding: 10px;
+                    padding-left: 16px;
+                    border-bottom: 1px solid #d4cfcf;
+                   
+                    .country-title{
+                        font-size: 14px;
+                    }
+                    h4{
+                        display: block;
+                    }
+                    .type-confirmed{
+                        h4{
+                            color: #ff073a;
+                        }
+                    }
+                    .type-active{
+                        h4{
+                            color: #007bff;
+                        }
+                    }
+                    .type-recovered{
+                        h4{
+                            color: #28a745;
+                        }
+                    }
+                    .type-deceased{
+                        h4{
+                            color: #6c757d;
+                        }
+                    }
+                    .type-level{
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 12px;
+                        margin-top: 10px;
+                        padding-right: 20px;
+                        min-height: 55px;
+                        li{
+                            padding-left: 10px;
+                            border-left: 1px solid #d4cfcf;
+                        }
+                        .Deaths,.Recovered{
+                            padding-left: 10px;
+                            border-left: 1px solid #d4cfcf;
+                        }
+                    }
+                    .type-level li:first-child{
+                        padding-left: 0px;
+                        border-left: 0px solid #d4cfcf;
+                    }
+                }
+                .country-table:last-child{
+                    border-bottom: 0px solid #d4cfcf;
+                }
+    
+              
             }
-
-          
+            
         }
-        
     }
+    
     
 }

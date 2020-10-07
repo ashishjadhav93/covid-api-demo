@@ -1,23 +1,33 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ManageInfoRoutingModule } from './manage-info-routing.module';
-import { ManageInfoComponent } from './components/manage-info/manage-info.component';
 import { HttpClientModule } from '@angular/common/http';
+import {ManageInfoRoutingModule} from   './manage-country-info-routing.module'
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { StateInfoComponent } from './components/state-info/state-info.component';
-import { StateMapComponent } from './components/state-info/state-map/state-map.component';
-import { ManageCountryInfoComponent } from './manage-country-info/manage-country-info.component';
+import { ManageCountryInfoComponent } from './components/manage-country-info/manage-country-info.component';
+// Import FusionCharts library and chart modules
+// import { FusionChartsModule } from "angular-fusioncharts";
+// // import {bootstrap} from '../../../../node_modules/bootstrap';
+// import * as FusionCharts from "fusioncharts";
+// import * as charts from "fusioncharts/fusioncharts.charts";
+// import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
+// Pass the fusioncharts library and chart modules
+// FusionChartsModule.fcRoot(FusionCharts, charts, FusionTheme);
 
-
-@NgModule({
+@NgModule({ 
   imports: [
     CommonModule,
-    ManageInfoRoutingModule,
     HttpClientModule,
+    ManageInfoRoutingModule,
     FormsModule,
+    BrowserModule,  
+    //FusionChartsModule,
   ],
-  declarations: [ManageInfoComponent, StateInfoComponent, StateMapComponent, ManageCountryInfoComponent]
-  
+  bootstrap: [ManageCountryInfoComponent],
+  declarations: [ManageCountryInfoComponent],
+  providers: [],
 })
-export class ManageInfoModule { }
+export class ManageCountryInfoModule {
+
+
+ }

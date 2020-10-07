@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ManageInfoComponent } from './components/manage-info/manage-info.component';
+import { ManageCountryInfoComponent } from './components/manage-country-info/manage-country-info.component';
 
 const routes: Routes = [
-  {path:'', component:ManageInfoComponent}
+  {path:'', component:ManageCountryInfoComponent}
 ];
 
 @NgModule({

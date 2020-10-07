@@ -59,6 +59,7 @@ export class StateMapComponent implements OnInit {
     this.getMapLoad(); 
    this.getmanageCountryInfo(this.dropDownvalueSelector.selectedCountry);
    this.getcountryCount();
+   this.districtBarChart();
   }
 
   //show map 
@@ -70,7 +71,6 @@ export class StateMapComponent implements OnInit {
       }else{   
         this.selectedstatemapName= data.selectedState; 
       }
-      console.log("true  1")
     }); 
   }
 
@@ -109,6 +109,7 @@ export class StateMapComponent implements OnInit {
     setTimeout(() => {
       try{
         this.onMapHover(document.querySelector('.stateMapChart').children[0].children[0].children[0].children[0].innerHTML);  
+      
       }catch(e){
         console.log(e)
       }
@@ -150,6 +151,167 @@ export class StateMapComponent implements OnInit {
             }
         }  
     });   
+  }
+  // fusioncharts date map
+  date= "";
+  data
+  chartdata={};   // c
+  ChartDateInfo=[];
+  categorieslabel;
+ // ChartDateInfo
+  objDate=[];
+  objConfirmed=[];
+  objActive=[];
+  objRecovered=[];
+  objOthers=[]
+  objDeceased=[];
+  districtBarChart(){
+    this.ManageInfoService.germapChartInfo(this.selectedstatemapName).subscribe(val=>{
+      console.log(val)
+      Object.keys(val[this.selectedstatemapName].dates).forEach((distinfo,value) => {   
+        this.objDate.push(distinfo)
+        if(val[this.selectedstatemapName].dates[distinfo].total.hasOwnProperty("confirmed")){   
+          this.objConfirmed.push(val[this.selectedstatemapName].dates[distinfo].total.confirmed)
+        }else{
+          this.objConfirmed.push(0)
+        }
+        if(val[this.selectedstatemapName].dates[distinfo].total.hasOwnProperty("recovered")){ 
+          this.objRecovered.push(val[this.selectedstatemapName].dates[distinfo].total.recovered)
+        }else{
+          this.objRecovered.push(0)
+        }
+        if(val[this.selectedstatemapName].dates[distinfo].total.hasOwnProperty("deceased")){ 
+          this.objDeceased.push(val[this.selectedstatemapName].dates[distinfo].total.deceased)
+        }else{
+          this.objDeceased.push(0)
+        }
+        if(val[this.selectedstatemapName].dates[distinfo].total.hasOwnProperty("other")){          
+          this.objOthers.push(val[this.selectedstatemapName].dates[distinfo].total.other)
+        }else{
+          this.objOthers.push(0)
+        }
+      });
+      //console.log(this.objDate)
+      this.chartdata = {
+        chart: {
+          caption: "Covid Cases overview ",
+          subcaption: "",
+          xaxisname: "Date",
+          yaxisname: "",
+          formatnumberscale: "1",
+          plottooltext:
+            "<b>$dataValue</b> <b>$seriesName</b> in $label",
+          theme: "fusion",
+          drawcrossline: "2",
+          palettecolors: "ff073a,007bff,28a745,6c757d",
+          "usePlotGradientColor": "1",
+          "plotGradientColor": "#ffffff"
+        },
+        categories: [
+          {
+            category: [
+              {
+                label: this.objDate[this.objDate.length-5],               
+              },
+              {
+                label: this.objDate[this.objDate.length-4]
+              },
+              {
+                label: this.objDate[this.objDate.length-3]
+              },
+              {
+                label: this.objDate[this.objDate.length-2]
+              },
+              {
+                label: this.objDate[this.objDate.length-1]
+              }
+            ]
+          }
+        ],
+        dataset: [
+          {
+            seriesname: "Confirmed",
+            data: [
+              {
+                value:  this.objConfirmed[this.objConfirmed.length-5]
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-4]
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-3]
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-2]
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-1]
+              }
+            ]
+          },
+          {
+            seriesname: "Active",
+            data: [
+              {
+                value: this.objConfirmed[this.objConfirmed.length-5]-(this.objRecovered[this.objRecovered.length-5]+this.objDeceased[this.objDeceased.length-5]+this.objOthers[this.objOthers.length-5])
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-4]-(this.objRecovered[this.objRecovered.length-4]+this.objDeceased[this.objDeceased.length-4]+this.objOthers[this.objOthers.length-4])
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-3]-(this.objRecovered[this.objRecovered.length-3]+this.objDeceased[this.objDeceased.length-3]+this.objOthers[this.objOthers.length-3])
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-2]-(this.objRecovered[this.objRecovered.length-2]+this.objDeceased[this.objDeceased.length-2]+this.objOthers[this.objOthers.length-2])
+              },
+              {
+                value: this.objConfirmed[this.objConfirmed.length-1]-(this.objRecovered[this.objRecovered.length-1]+this.objDeceased[this.objDeceased.length-1]+this.objOthers[this.objOthers.length-1])
+              }
+            ]
+          },
+          {
+            seriesname: "Recovered",
+            data: [
+              {
+                value:  this.objRecovered[this.objRecovered.length-5]
+              },
+              {
+                value: this.objRecovered[this.objRecovered.length-4]
+              },
+              {
+                value: this.objRecovered[this.objRecovered.length-3]
+              },
+              {
+                value: this.objRecovered[this.objRecovered.length-2]
+              },
+              {
+                value: this.objRecovered[this.objRecovered.length-1]
+              }
+            ]
+          },
+          {
+            seriesname: "Deceased",
+            data: [
+              {
+                value:  this.objDeceased[this.objDeceased.length-5]
+              },
+              {
+                value: this.objDeceased[this.objDeceased.length-4]
+              },
+              {
+                value: this.objDeceased[this.objDeceased.length-3]
+              },
+              {
+                value: this.objDeceased[this.objDeceased.length-2]
+              },
+              {
+                value: this.objDeceased[this.objDeceased.length-1]
+              }
+            ]
+          }
+        ]
+      };
+    });
   }
   
   

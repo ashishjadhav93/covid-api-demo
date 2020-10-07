@@ -1,13 +1,12 @@
-import {ManageInfoModule } from './manage-info.module';
-
-describe('manageInfoModule', () => {
-  let manageInfoModule: ManageInfoModule;
+import {ManageCountryInfoModule} from './manage-country-info.module';
+describe('ManageCountryInfoModule', () => {
+  let manageCountryInfoModule: ManageCountryInfoModule;
 
   beforeEach(() => {
-    manageInfoModule = new ManageInfoModule();
+    manageCountryInfoModule = new ManageCountryInfoModule();
   });
 
   it('should create an instance', () => {
-    expect(manageInfoModule).toBeTruthy();
+    expect(manageCountryInfoModule).toBeTruthy();
   });
 });
