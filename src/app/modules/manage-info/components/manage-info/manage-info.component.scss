@@ -62,11 +62,12 @@
         font-weight: bold;
         background: rgba(226, 48, 40, 0.0627451);
         border-radius: 5px;
-        color: #e23028;
+        color: #fff;
         width: auto;
         max-width: 100%;
         margin-bottom: 3px;
         padding-left: 20px;
+        background: linear-gradient(142deg, #6F8AE6, #1BC58D);
     }
     .select-box:after{
         content: "";
@@ -229,6 +230,7 @@
                 font-weight: bold;
                 color: #ffffff;
                 background-color: #009fdd;
+                background: linear-gradient(142deg,#6f8ae6,#1bc58d);
                 .close-modal {
                     margin-left: auto;
                     width: 24px;
@@ -356,10 +358,12 @@
                 background: rgba(226, 48, 40, 0.0627451);
                 border-radius: 5px;
                 color: #e23028;
+                color: #fff;
                 width: auto;
                 max-width: 100%;
                 margin-bottom: 20px;
                 padding-left: 20px;
+                background: linear-gradient(142deg, #6F8AE6, #1BC58D);
             }
             .state-level-info{
                 padding-left: 20px;

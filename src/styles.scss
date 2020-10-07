@@ -103,7 +103,7 @@ input{outline:0;border:0;background:transparent;}
       background-color: transparent;
     }
     .CTA-PRIMARY {
-      background-color: #009FDD;
+      background: linear-gradient(142deg,#6f8ae6,#1bc58d);
       color: #fff;    
     }
     .CTA-DELETE {
@@ -117,10 +117,10 @@ input{outline:0;border:0;background:transparent;}
       background-color: rgb(250, 178, 182);    
     }
     .CTA-PRIMARY:hover {
-      background-color: #008BC1;
+      background: linear-gradient(142deg,#1bc58d,#6f8ae6);
     }
     .CTA-PRIMARY:active {
-      background-color: #006F9A;
+      background: linear-gradient(142deg,#1bc58d,#6f8ae6);
     }
     .CTA-HOLLOW {
       border: 1.5px solid #009FDD;
