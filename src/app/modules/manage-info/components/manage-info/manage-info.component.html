@@ -156,7 +156,7 @@
                         </ul>
                     </div>
                     <div class="tableBody" *ngIf="districtTableData.length">
-                        <div class="stateName" *ngFor="let element of districtTableData" [id]=element[0] #element[0] >
+                        <div class="stateName" *ngFor="let element of districtTableData" [id]=element[0]>
                            <div class="rowdata">
                                <div class="dataBox" *ngFor="let elementChild of element"><span>{{elementChild.toLocaleString('en-GB')}}</span></div>                            
                             </div>
@@ -178,7 +178,7 @@
         </div>
      </div>
      <div class="updatepopup" [ngStyle]="{'right': toggle  ? '20px':'-401px'}">
-        <h3>Today updatelog</h3>
+        <h3>Today update</h3>
         <div class="updatenews">
             <p *ngFor="let deltaElement of updatelognews">{{deltaElement}}</p>
         </div>

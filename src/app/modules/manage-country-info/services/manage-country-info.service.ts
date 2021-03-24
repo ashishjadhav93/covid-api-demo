@@ -13,4 +13,8 @@ export class ManageCountryInfoService {
   getmanageCountrynameInfo():Observable<any[]> {   
     return this.http.get<any[]>(URLS.manageCountryInfo.getCntryInfo)
   }
+  getStateInfo():Observable<any[]> {   
+    return this.http.get<any[]>(URLS.stateInfo.getStateNameInfo)
+  }
 }
+

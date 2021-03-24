@@ -20,6 +20,7 @@ import * as Maps from 'fusioncharts/fusioncharts.maps';
 import * as worldwithcountries from 'fusioncharts/maps/fusioncharts.worldwithcountries';
 import * as usa from 'fusioncharts/maps/fusioncharts.usa';
 import * as india from 'fusioncharts/maps/fusioncharts.india';
+// import * as allmaps from 'fusioncharts/maps';
 // import * as indiacountrie from 'fusioncharts/maps/fusioncharts.india';
 
 // Pass the fusioncharts library and chart modules

@@ -211,19 +211,19 @@ export class StateMapComponent implements OnInit {
           {
             category: [
               {
-                label: this.objDate[this.objDate.length-5],               
+                label: this.objDate[this.objDate.length-5]              
               },
               {
-                label: this.objDate[this.objDate.length-4]
+                label: this.objDate[this.objDate.length-5] 
               },
               {
-                label: this.objDate[this.objDate.length-3]
+                label: this.objDate[this.objDate.length-5]
               },
               {
-                label: this.objDate[this.objDate.length-2]
+                label: this.objDate[this.objDate.length-5]
               },
               {
-                label: this.objDate[this.objDate.length-1]
+                label: this.objDate[this.objDate.length-5]
               }
             ]
           }
@@ -270,10 +270,10 @@ export class StateMapComponent implements OnInit {
             ]
           },
           {
-            seriesname: "Recovered",
+            seriesname: "Recovered",           
             data: [
               {
-                value:  this.objRecovered[this.objRecovered.length-5]
+                value: this.objRecovered[this.objRecovered.length-5]
               },
               {
                 value: this.objRecovered[this.objRecovered.length-4]
@@ -286,8 +286,9 @@ export class StateMapComponent implements OnInit {
               },
               {
                 value: this.objRecovered[this.objRecovered.length-1]
-              }
+              }              
             ]
+            
           },
           {
             seriesname: "Deceased",
@@ -311,7 +312,9 @@ export class StateMapComponent implements OnInit {
           }
         ]
       };
+    
     });
+    console.log(this.chartdata)
   }
   
   

@@ -2,7 +2,7 @@
     Search your Country
     <div class="select-box">
         <select class="countrySelector" [(ngModel)]="dropDownvalueSelector['selectedCountry']" (change)="onChangeCountryDropDown(dropDownvalueSelector['selectedCountry'])" *ngIf="countryNames.length">
-            <option *ngFor="let element of countryNames">{{element}}</option>
+            <option *ngFor="let element of countryNames"  style="background-image:url(https://www.gstatic.com/onebox/sports/logos/flags/marshall_islands_icon_square.png);"> {{element}}</option>
             </select>
     </div>
     <div class="side-container">
@@ -28,16 +28,22 @@
                     <h2>{{dropDownvalueSelector.deceasedCase}}</h2>
                 </li>
             </ul>
+            <!-- <p style="padding:10px; background: #efefef" [innerHTML]="initMessage || message"></p> -->
+            <p>
+            <!-- <button class="btn btn-outline-secondary btn-sm" (click)="attachEvent()" [disabled]="attached">ADD/LISTEN TO DATAPLOTCLICK EVENT</button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="removeEvent()" [disabled]="!attached">REMOVE DATAPLOTCLICK EVENT</button> -->
         </div>
         <div class="worldmap">
             <fusioncharts
             [width]="1200"
-            [height]="600"
+            [height]="800"
             [type]="type"
             [dataFormat]="dataFormat"
-            [dataSource]="dataSource"
+            [dataSource]="dataSource"       
+            (initialized)="initialized($event)"
           >
           </fusioncharts>
+          
         </div>
     </div>
          

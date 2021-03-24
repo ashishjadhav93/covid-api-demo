@@ -36,8 +36,8 @@ export class ManageInfoComponent implements OnInit {
   "AR":"Arunachal Pradesh",
   "AS":"Assam",
   "BR":"Bihar",
-  "CT":"Chandigarh",
-  "CH":"Chhattisgarh",
+  "CH":"Chandigarh",
+  "CT":"Chhattisgarh",
   "DN":"Dadra and Nagar Haveli",
   "DD":"Daman and Diu",
   "DL":"Delhi",
@@ -67,7 +67,8 @@ export class ManageInfoComponent implements OnInit {
   "TR":"Tripura",
   "UP":"Uttar Pradesh",
   "UT":"Uttarakhand",
-  "WB":"West Bengal"
+  "WB":"West Bengal",
+  "TT":"thiruvananthapuram"
 }
  districtData;
  updatelognews=[]
@@ -108,7 +109,7 @@ associatedStateCategoryData=[];
     // this.getmanageCountryInfo(this.dropDownvalueSelector.selectedCountry)
      this.Loginfo();
     this.getStateTableInfo();
-    this.onloadAnimMap();   
+    //this.onloadAnimMap();   
    // this.getmanageCalendarDate("2020-09-17");  
   }
   // getmanageCountryInfo(selectedValue){   
@@ -131,14 +132,19 @@ associatedStateCategoryData=[];
   // }
   Loginfo(){
     this.ManageInfoService.getLogInfo().subscribe(val=>{   
-        Object.keys(val).forEach((objectKey,value) => {              
-             this.updatelognews.push(val[objectKey].update)
+        Object.keys(val).forEach((objectKey,value) => {
+          // var splitted = str.replace(',', '<br/>')
+          //console.log(val[objectKey])
+              this.updatelognews.push(val[objectKey].update.replace(',','\n'));
+              //console.log(val[objectKey].update.split(','))
+            //this.updatelognews.push("1282 new cases /n 1418 recoveries and 9 deaths in Madhya Pradesh")
+            
       });   
     });    
   }
   stateTableData=[];
   getStateTableInfo(){
-    this.ManageInfoService.getStateInfo().subscribe(val=>{
+    this.ManageInfoService.getStateInfo().subscribe(val=>{ 
       this.districtData=val
         Object.keys(val).forEach((objectKey,value) => { 
          // console.log(val[objectKey])
@@ -147,14 +153,10 @@ associatedStateCategoryData=[];
               val[objectKey].total.confirmed.toLocaleString('en-GB'),
               (val[objectKey].total.confirmed-val[objectKey].total.recovered).toLocaleString('en-GB'),
               val[objectKey].total.recovered.toLocaleString('en-GB'),
-              val[objectKey].total.deceased,
+              val[objectKey].total.deceased.toLocaleString('en-GB'),
               val[objectKey].total.tested.toLocaleString('en-GB')
             ]            
           );
-          //this.stateTableData.push(objectKey);
-          // if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.hasOwnProperty("deceased")){
-
-          // }
       });
       this.enter('MH','Maharashtra');
 
@@ -182,7 +184,7 @@ associatedStateCategoryData=[];
     this.selectedValueTitle="";
     this.selectedStateAttr.push(selectedValue)
       this.selectedValueTitle="Of " +this.stateISDname[selectedValue];
-  
+   // console.log(selectedValue)
     this.modalObject['associatedStateDataTable'] = true;  
     
     Object.keys(this.districtData).forEach((objectKey,value) => {
@@ -228,15 +230,6 @@ associatedStateCategoryData=[];
     }
   }
   maploadtimer
-  onloadAnimMap(){
-    // for (var i=0;i<=document.getElementsByClassName("land").length;i++){
-    //     this.maploadtimer=0.2+i;
-    //     document.getElementsByTagName("path")[i].style.transition =this.maploadtimer+"s"    
-    //     document.getElementsByTagName("path")[i].style.transitionDelay =this.maploadtimer+"s" 
-    //    // document.getElementsByTagName("path")[i].style.opacity ="1"; 
-    // }
-  }
-  
   hoverStateSelector={
     confirmedCase:0,
     activeCase:0,
@@ -247,6 +240,7 @@ associatedStateCategoryData=[];
  };
   enter(stateattr,value) {   
     this.hoverStateSelector.selectedState=value; 
+
     this.stateTableData.forEach(element => {  
     //  console.log(element)
       if(element[0]==stateattr){
@@ -256,7 +250,13 @@ associatedStateCategoryData=[];
         this.hoverStateSelector.deceasedCase=element[4];
         this.hoverStateSelector.testedcase=element[5];
       }     
-    });
+    });       
+    if(document.querySelectorAll(".cf").length >0){
+      document.querySelector(".cf").classList.remove("cf");
+    }      
+     if(document.querySelectorAll("#"+stateattr).length >0){
+      document.querySelector("#"+stateattr).classList.add("cf");
+     }
 }
   
   cancelModal() {

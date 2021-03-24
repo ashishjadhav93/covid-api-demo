@@ -16,7 +16,6 @@ export const URLS = {
   manageCalendarViceData:{
     getCalendarViceData:'https://api.covid19india.org/v4/min/'
   },
-
   countryTotalCount:{
     getTotalCntryInfo:'https://api.covid19api.com/world/total'
   },
