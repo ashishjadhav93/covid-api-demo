@@ -5,10 +5,10 @@
     position: relative;
     overflow: hidden;
     padding-bottom: 15px;   
-    .type-level{display: flex;width: 559px;justify-content: space-between;align-items: center;text-align: center;     
+    .type-level{display: flex;width: 100%;justify-content: space-between;align-items: center;text-align: center;     
         .level-item{font-weight: 600;width: 100%;font-size: 18px;margin-bottom: 8px;display: block;}
         h2{font-weight: 600;font-size: 24px;}
-        .type-confirmed,.Confirmed{
+        .type-confirmed,.Confirmed,.type-vaccinated{
             color: #ff073a;
             h4{color: rgba(255,7,58,.6);display: block;min-height: 20px;}
             h2{color: #ff073a;}
@@ -154,7 +154,7 @@
                         font-weight: bold;
                         font-size: 17px;
                         text-align: center;
-                        min-width: 120px;                       
+                        min-width: 100px;                       
                     }
                     li:first-child{
                         border-left: 1px solid;
@@ -172,8 +172,11 @@
                     } 
                     li:hth-child(5){
                         color: #6c757d;
-                    }                  
-                }
+                    }   
+                    li:nth-child(6){
+                        color: #ff073a;   
+                    }               
+                } 
             } 
             .tableBody {  
                 .rowdata {
@@ -182,6 +185,9 @@
                     border-top: 0px;
                     cursor: pointer;
                 }
+                // .stateName:hover{
+                //     background: linear-gradient(142deg, #6F8AE6, #1BC58D);
+                // }
                 .cf{
                     background: linear-gradient(142deg, #6F8AE6, #1BC58D);
                 }
@@ -348,13 +354,17 @@
                 stroke: gray;
                 cursor: pointer;
             }
+            .fillcolor{
+                fill: #8080803b;
+                stroke: #fff;
+            }
             .land:hover{
                 fill: #8080803b;
                 stroke: #fff;
             }
         }
         #displayArea{
-            max-width: 635px;
+            max-width: 100%;
             h1{
                 font-size: 32px;
                 font-weight: bold;

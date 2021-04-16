@@ -42,6 +42,7 @@ export class StateInfoComponent implements OnInit {
     NewConfirmed:0,
     NewDeaths:0,
     NewRecovered:0,
+    vaccinated:0
  };
  stateISDname={  
     "AN":"Andaman and Nicobar Islands",
@@ -118,6 +119,7 @@ mapBlockCall=false
         this.StateSelectors.deceasedCase=val[this.route.snapshot.params.state].total.deceased;
         this.StateSelectors.testedcase=val[this.route.snapshot.params.state].total.tested;
         this.StateSelectors.population=val[this.route.snapshot.params.state].meta.population;
+        this.StateSelectors.vaccinated=val[this.route.snapshot.params.state].total.vaccinated;
        if(val[this.route.snapshot.params.state].delta !== undefined){
         if(val[this.route.snapshot.params.state].delta.confirmed !== undefined){
           this.StateSelectors.NewConfirmed=val[this.route.snapshot.params.state].delta.confirmed;  

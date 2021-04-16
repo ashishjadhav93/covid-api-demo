@@ -28,10 +28,11 @@
                             <li>Recovered</li>
                             <li>Deceased</li>
                             <li>Tested</li>
+                            <li>vaccinated</li>
                         </ul>
                     </div>
                     <div class="tableBody">
-                        <div class="stateName" *ngFor="let element of stateTableData" [id]=element[0] #element[0] >
+                        <div class="stateName" *ngFor="let element of stateTableData" [id]=element[0] #element[0] (mouseenter)="tablerowHower(element[0])">
                         <div class="rowdata" (click)="districtDatashow(element[0])">
                             <div class="dataBox" *ngFor="let elementChild of element"><span>{{elementChild}}</span></div>                            
                             </div>
@@ -75,7 +76,10 @@
                             <span class="level-item">Tested</span>
                             <h2>{{hoverStateSelector.testedcase.toLocaleString('en-GB')}}</h2>
                         </li>
-                        
+                        <li class="type-vaccinated">
+                            <span class="level-item">vaccinated</span>
+                            <h2>{{hoverStateSelector.testedcase.toLocaleString('en-GB')}}</h2>
+                        </li>
                     </ul>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" id="india-map" xmlns:amcharts="http://amcharts.com/ammap" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
@@ -153,6 +157,7 @@
                             <li>Recovered</li>
                             <li>Deceased</li>
                             <li>Tested</li>
+                            <li>vaccinated</li>
                         </ul>
                     </div>
                     <div class="tableBody" *ngIf="districtTableData.length">

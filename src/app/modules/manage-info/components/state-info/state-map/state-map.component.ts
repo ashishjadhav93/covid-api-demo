@@ -26,16 +26,19 @@ export class StateMapComponent implements OnInit {
     NewConfirmed:0,
     NewDeaths:0,
     NewRecovered:0,
+    NewVaccinated:0,
     selectedCountry:"India"
   };
   showDistrictsData={
     confirmedCase:0,
     activeCase:0,
     recoveredCase:0,
+    vaccinated:0,
     deceasedCase:0,
     NewConfirmed:0,
     NewDeaths:0,
     NewRecovered:0,
+    NewVaccinated:0
   }
   selectedstatemapName
   selectedDistrict=[];
@@ -127,27 +130,33 @@ export class StateMapComponent implements OnInit {
    this.showDistrictsData.activeCase=0;
    this.showDistrictsData.recoveredCase=0;
    this.showDistrictsData.deceasedCase=0;
+   this.showDistrictsData.vaccinated=0;
    this.showDistrictsData.NewConfirmed=0, 
    this.showDistrictsData.NewRecovered=0,
    this.showDistrictsData.NewDeaths=0;
+   this.showDistrictsData.NewVaccinated=0;
     this.ManageInfoService.getStateInfo().subscribe(val=>{     
         if(val[this.route.snapshot.params.state].districts.hasOwnProperty(this.selectedDistrictpage)){                
           this.showDistrictsData.confirmedCase=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.confirmed;
           this.showDistrictsData.recoveredCase=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.recovered;
+          this.showDistrictsData.vaccinated=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.vaccinated;
           if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.hasOwnProperty("deceased")){
             this.showDistrictsData.deceasedCase=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].total.deceased;
           }
           this.showDistrictsData.activeCase=this.showDistrictsData.confirmedCase-(this.showDistrictsData.recoveredCase+this.showDistrictsData.deceasedCase)
-            if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta !== undefined){
-            if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.confirmed !== undefined){
-                  this.showDistrictsData.NewConfirmed=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.confirmed;  
-                }            
-                if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.recovered !== undefined){
-                  this.showDistrictsData.NewRecovered=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.recovered;  
-                } 
-                if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.deceased !== undefined){
-                  this.showDistrictsData.NewDeaths=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta.deceased;  
-                }
+            if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7 !== undefined){
+              if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.confirmed !== undefined){
+                    this.showDistrictsData.NewConfirmed=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.confirmed;  
+              }            
+              if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.recovered !== undefined){
+                this.showDistrictsData.NewRecovered=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.recovered;  
+              } 
+              if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.deceased !== undefined){
+                this.showDistrictsData.NewDeaths=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.deceased;  
+              }
+              if(val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.vaccinated !== undefined){
+                this.showDistrictsData.NewVaccinated=val[this.route.snapshot.params.state].districts[this.selectedDistrictpage].delta7.vaccinated;  
+              }
             }
         }  
     });   
@@ -163,7 +172,8 @@ export class StateMapComponent implements OnInit {
   objConfirmed=[];
   objActive=[];
   objRecovered=[];
-  objOthers=[]
+  objOthers=[];
+  objVaccinated=[];
   objDeceased=[];
   districtBarChart(){
     this.ManageInfoService.germapChartInfo(this.selectedstatemapName).subscribe(val=>{
@@ -190,6 +200,11 @@ export class StateMapComponent implements OnInit {
         }else{
           this.objOthers.push(0)
         }
+        if(val[this.selectedstatemapName].dates[distinfo].total.hasOwnProperty("vaccinated")){          
+          this.objVaccinated.push(val[this.selectedstatemapName].dates[distinfo].total.vaccinated)
+        }else{
+          this.objVaccinated.push(0)
+        }
       });
       //console.log(this.objDate)
       this.chartdata = {
@@ -203,7 +218,7 @@ export class StateMapComponent implements OnInit {
             "<b>$dataValue</b> <b>$seriesName</b> in $label",
           theme: "fusion",
           drawcrossline: "2",
-          palettecolors: "ff073a,007bff,28a745,6c757d",
+          palettecolors: "ff073a,007bff,28a745,6c757d,df832c",
           "usePlotGradientColor": "1",
           "plotGradientColor": "#ffffff"
         },
@@ -214,16 +229,16 @@ export class StateMapComponent implements OnInit {
                 label: this.objDate[this.objDate.length-5]              
               },
               {
-                label: this.objDate[this.objDate.length-5] 
+                label: this.objDate[this.objDate.length-4]              
               },
               {
-                label: this.objDate[this.objDate.length-5]
+                label: this.objDate[this.objDate.length-3] 
               },
               {
-                label: this.objDate[this.objDate.length-5]
+                label: this.objDate[this.objDate.length-2]
               },
               {
-                label: this.objDate[this.objDate.length-5]
+                label: this.objDate[this.objDate.length-1]
               }
             ]
           }
@@ -309,12 +324,30 @@ export class StateMapComponent implements OnInit {
                 value: this.objDeceased[this.objDeceased.length-1]
               }
             ]
+          },          
+          {
+            seriesname: "vaccinated",
+            data: [
+              {
+                value:  this.objVaccinated[this.objVaccinated.length-5]
+              },
+              {
+                value: this.objVaccinated[this.objVaccinated.length-4]
+              },
+              {
+                value: this.objVaccinated[this.objVaccinated.length-3]
+              },
+              {
+                value: this.objVaccinated[this.objVaccinated.length-2]
+              },
+              {
+                value: this.objVaccinated[this.objVaccinated.length-1]
+              }
+            ]
           }
         ]
-      };
-    
-    });
-    console.log(this.chartdata)
+      };    
+    });   
   }
   
   

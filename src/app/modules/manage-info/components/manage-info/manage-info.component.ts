@@ -145,6 +145,7 @@ associatedStateCategoryData=[];
   stateTableData=[];
   getStateTableInfo(){
     this.ManageInfoService.getStateInfo().subscribe(val=>{ 
+      //console.log(val)
       this.districtData=val
         Object.keys(val).forEach((objectKey,value) => { 
          // console.log(val[objectKey])
@@ -154,14 +155,14 @@ associatedStateCategoryData=[];
               (val[objectKey].total.confirmed-val[objectKey].total.recovered).toLocaleString('en-GB'),
               val[objectKey].total.recovered.toLocaleString('en-GB'),
               val[objectKey].total.deceased.toLocaleString('en-GB'),
-              val[objectKey].total.tested.toLocaleString('en-GB')
+              val[objectKey].total.tested.toLocaleString('en-GB'),
+              val[objectKey].total.vaccinated.toLocaleString('en-GB')
             ]            
           );
       });
       this.enter('MH','Maharashtra');
 
     }); 
-    console.log(this.stateTableData) 
   }
  
   
@@ -198,7 +199,8 @@ associatedStateCategoryData=[];
                 this.districtData[selectedValue].districts[objectKey].total.confirmed-(this.districtData[selectedValue].districts[objectKey].total.recovered + this.districtData[selectedValue].districts[objectKey].total.deceased),
                 this.districtData[selectedValue].districts[objectKey].total.recovered,
                 this.districtData[selectedValue].districts[objectKey].total.deceased,
-                this.districtData[selectedValue].districts[objectKey].total.tested
+                this.districtData[selectedValue].districts[objectKey].total.tested,
+                this.districtData[selectedValue].districts[objectKey].total.vaccinated,
               ]             
             );
           });
@@ -235,30 +237,48 @@ associatedStateCategoryData=[];
     activeCase:0,
     recoveredCase:0,
     deceasedCase:0,  
-    testedcase:0,  
+    testedcase:0,
+    vaccinatcase:0,  
     selectedState:"MH"
  };
   enter(stateattr,value) {   
-    this.hoverStateSelector.selectedState=value; 
-
+    this.hoverStateSelector.selectedState=value;    
+   // console.log(value)
     this.stateTableData.forEach(element => {  
-    //  console.log(element)
+     
       if(element[0]==stateattr){
         this.hoverStateSelector.confirmedCase=element[1];
         this.hoverStateSelector.activeCase=element[2];
         this.hoverStateSelector.recoveredCase=element[3];
         this.hoverStateSelector.deceasedCase=element[4];
         this.hoverStateSelector.testedcase=element[5];
+        this.hoverStateSelector.vaccinatcase=element[6];
       }     
-    });       
+    });   
+    if(document.querySelectorAll(".fillcolor").length >0){
+      document.querySelector(".fillcolor").classList.remove("fillcolor");
+    }    
     if(document.querySelectorAll(".cf").length >0){
       document.querySelector(".cf").classList.remove("cf");
     }      
-     if(document.querySelectorAll("#"+stateattr).length >0){
-      document.querySelector("#"+stateattr).classList.add("cf");
-     }
+    if(document.querySelectorAll("#"+stateattr).length >0){
+      document.querySelector("#"+stateattr).classList.add("cf"); 
+    }
 }
-  
+tablerowHower(hoverValue){
+  if(document.querySelectorAll(".fillcolor").length >0){
+    document.querySelector(".fillcolor").classList.remove("fillcolor");
+  }
+  if(document.querySelectorAll("#IN-"+hoverValue).length >0){
+    document.getElementById("IN-"+hoverValue).classList.add("fillcolor");  
+  }
+  if(document.querySelectorAll(".cf").length >0){
+    document.querySelector(".cf").classList.remove("cf");
+  }      
+  if(document.querySelectorAll("#"+hoverValue).length >0){
+    document.querySelector("#"+hoverValue).classList.add("cf"); 
+  }
+} 
   cancelModal() {
     Object.keys(this.modalObject).forEach(elem => {
       this.modalObject[elem] = false;
