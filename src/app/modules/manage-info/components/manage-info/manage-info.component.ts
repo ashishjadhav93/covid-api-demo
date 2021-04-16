@@ -242,10 +242,8 @@ associatedStateCategoryData=[];
     selectedState:"MH"
  };
   enter(stateattr,value) {   
-    this.hoverStateSelector.selectedState=value;    
-   // console.log(value)
-    this.stateTableData.forEach(element => {  
-     
+    this.hoverStateSelector.selectedState=value;
+    this.stateTableData.forEach(element => {      
       if(element[0]==stateattr){
         this.hoverStateSelector.confirmedCase=element[1];
         this.hoverStateSelector.activeCase=element[2];
@@ -255,9 +253,9 @@ associatedStateCategoryData=[];
         this.hoverStateSelector.vaccinatcase=element[6];
       }     
     });   
-    if(document.querySelectorAll(".fillcolor").length >0){
-      document.querySelector(".fillcolor").classList.remove("fillcolor");
-    }    
+    // if(document.querySelectorAll(".fillcolor").length >0){
+    //   document.querySelector(".fillcolor").classList.remove("fillcolor");
+    // }    
     if(document.querySelectorAll(".cf").length >0){
       document.querySelector(".cf").classList.remove("cf");
     }      
@@ -265,19 +263,17 @@ associatedStateCategoryData=[];
       document.querySelector("#"+stateattr).classList.add("cf"); 
     }
 }
+state_name
 tablerowHower(hoverValue){
+  
   if(document.querySelectorAll(".fillcolor").length >0){
-    document.querySelector(".fillcolor").classList.remove("fillcolor");
-  }
+    document.querySelector(".fillcolor").classList.remove("fillcolor");   
+  } 
   if(document.querySelectorAll("#IN-"+hoverValue).length >0){
     document.getElementById("IN-"+hoverValue).classList.add("fillcolor");  
-  }
-  if(document.querySelectorAll(".cf").length >0){
-    document.querySelector(".cf").classList.remove("cf");
-  }      
-  if(document.querySelectorAll("#"+hoverValue).length >0){
-    document.querySelector("#"+hoverValue).classList.add("cf"); 
-  }
+    this.state_name=document.getElementById("IN-"+hoverValue).getAttribute("title") 
+  }  
+  this.enter(hoverValue,this.state_name)
 } 
   cancelModal() {
     Object.keys(this.modalObject).forEach(elem => {
